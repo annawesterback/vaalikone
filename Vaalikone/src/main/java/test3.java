@@ -4,7 +4,5 @@ public class test3 {
 	
 	
 //	Ansa kirjottelee
-	//Ja lis‰‰
-	
-	//HEIIII
+	//Ja lis√§√§
 }
