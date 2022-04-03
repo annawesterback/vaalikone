@@ -3,5 +3,6 @@ public class test3 {
 //dkjhgklghklhklhklgjhjjh
 	
 	
-	Ansa kirjottelee
+//	Ansa kirjottelee
+	//Ja lis‰‰
 }
