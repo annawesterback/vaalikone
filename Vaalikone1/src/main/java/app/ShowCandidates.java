@@ -16,14 +16,15 @@ import data.Candidates;
 /**
  * Servlet implementation class ShowCandidates
  */
-@WebServlet("/ShowCandidates")
+@WebServlet("/showcandidates")
 public class ShowCandidates extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Dao dao=null;
 	
+	// Tähän täytyy laittaa oikea datashit
 	@Override
 	public void init() {
-		dao=new Dao("jdbc:mysql://localhost:8080/fishdatabase", "pena", "kukkuu");
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "anna", "kukkuu");
 	}
        
     /**
@@ -45,9 +46,9 @@ public class ShowCandidates extends HttpServlet {
 		else {
 			System.out.println("No connection to database");
 		}
-		request.setAttribute("candidateslist", list);
+		request.setAttribute("candidateslist", list); //tähän tulee listan nimi??
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidates.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidates.jsp"); //tämä luo meille näkymän
 		rd.forward(request, response);
 	}
 }

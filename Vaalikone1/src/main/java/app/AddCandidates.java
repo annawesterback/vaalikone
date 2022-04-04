@@ -1,3 +1,5 @@
+// Tässä ei ole vielä mitään sisältöä, alla oleva paska on automatic servlet sisältö
+
 package app;
 
 import java.io.IOException;
@@ -10,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AddCandidates
  */
-@WebServlet("/AddCandidates")
+@WebServlet("/addcandidates")
 public class AddCandidates extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
