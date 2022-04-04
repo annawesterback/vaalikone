@@ -10,26 +10,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Fish application</title>
+<title>Vaalikone</title>
 
+
+<!-- Tohon hreffiin tehdään joku css filu? -->
 <link rel="stylesheet" type="text/css" href="mycssfilesomewhere.css">
 <script src="myscriptfile.js"></script>
 
 </head>
 <body>
-<h2>Fish application</h2>
-<ol>
-<c:forEach var="vaalikone" items="${requestScope.fishlist}" >
-<li>${fish.id}: ${fish.breed} <a href='/delete?id=${fish.id}'>delete</a> <a href='/readtoupdate?id=${fish.id}'>update</a>
-</c:forEach>
-</ol>
+<h2>Tervetuloa vaalikoneeseen</h2>
+
+<!-- AHAA eli tässä käytetään JOKO TAI eli tämä alempi (tommi sano että vaikee) ja sitten tuo array list mikä on jspjavana -->
+<!-- eli sitä ois vissiin syytä käyttää. Ei toimi ainakaan vielä (videolla n. kohta 45min)-->
+	<ol>
+		<c:forEach var="candidates" items="${requestScope.candidateslist}" >
+			<li>${ehdokkaat.id}: ${ehdokkaat.sukunimi} <a href='/deletecandidates?id=${ehdokkaat.id}'>delete</a> <a href='/editcandidates?id=${ehdokkaat.id}'>update</a>
+		</c:forEach>
+	</ol>
 
 <%
 ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
 
 for (int i=0;candidatesList!=null && i<candidatesList.size();i++){
 	Candidates f=candidatesList.get(i);
-	out.println(f.getId()+": "+f.getBreed()+"<a href='/delete?id="+f.getId()+"'>delete</a> <a href='/readtoupdate?id="+f.getId()+"'>update</a>");
+	out.println(f.getId()+": "+f.getSukunimi()+"<a href='/deletecandidates?id="+f.getId()+"'>deletecandidates</a> <a href='/?id="+f.getId()+"'>editcandidates</a>");
 }
 %>
 

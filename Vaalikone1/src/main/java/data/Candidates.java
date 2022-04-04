@@ -2,11 +2,11 @@ package data;
 
 public class Candidates {
 	private int id;
-	private String breed;
-	public Candidates(String id, String breed) {
+	private String sukunimi;
+	public Candidates(String id, String sukunimi) {
 		// TODO Auto-generated constructor stub
 		setId(id);
-		this.breed=breed;
+		this.sukunimi=sukunimi;
 	}
 	public Candidates() {
 		// TODO Auto-generated constructor stub
@@ -25,10 +25,10 @@ public class Candidates {
 			//Do nothing - the value of id won't be changed
 		}
 	}
-	public String getBreed() {
-		return breed;
+	public String getSukunimi() {
+		return sukunimi;
 	}
-	public void setBreed(String breed) {
-		this.breed = breed;
+	public void setSukunimi(String sukunimi) {
+		this.sukunimi = sukunimi;
 	}
 }

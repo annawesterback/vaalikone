@@ -25,6 +25,7 @@ public class Dao {
 		this.pass=pass;
 	}
 	
+	//Pyydet‰‰n ottamaan yhteys
 	public boolean getConnection() {
 		try {
 	        if (conn == null || conn.isClosed()) {
@@ -41,16 +42,18 @@ public class Dao {
 			System.out.println(e.getMessage());
 			return false;
 		}
+		
+		//Luetaan kaikki ehdottaat taulusta
 	}
 	public ArrayList<Candidates> readAllCandidates() {
 		ArrayList<Candidates> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from fish");
+			ResultSet RS=stmt.executeQuery("select * from vaalikone");
 			while (RS.next()){
 				Candidates f=new Candidates();
-				f.setId(RS.getInt("id"));
-				f.setBreed(RS.getString("breed"));
+				f.setId(RS.getInt("ehdokas_id"));
+				f.setSukunimi(RS.getString("sukunimi"));
 				list.add(f);
 			}
 			return list;
@@ -58,12 +61,14 @@ public class Dao {
 		catch(SQLException e) {
 			return null;
 		}
+		
+		//P‰ivitet‰‰n tietoja
 	}
 	public ArrayList<Candidates> updateCandidates(Candidates f) {
 		try {
-			String sql="update fish set breed=? where id=?";
+			String sql="update vaalikone set sukunimi=? where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, f.getBreed());
+			pstmt.setString(1, f.getSukunimi());
 			pstmt.setInt(2, f.getId());
 			pstmt.executeUpdate();
 			return readAllCandidates();
@@ -71,10 +76,12 @@ public class Dao {
 		catch(SQLException e) {
 			return null;
 		}
+		
+		// Poistetaan tietoja
 	}
 	public ArrayList<Candidates> deleteCandidates(String id) {
 		try {
-			String sql="delete from vaalikone where id=?";
+			String sql="delete from vaalikone where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
@@ -84,18 +91,20 @@ public class Dao {
 			return null;
 		}
 	}
+	
+	// Luetaan tietoja
 
 	public Candidates readCandidates(String id) {
 		Candidates f=null;
 		try {
-			String sql="select * from vaalikone where id=?";
+			String sql="select * from vaalikone where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
 				f=new Candidates();
 				f.setId(RS.getInt("id"));
-				f.setBreed(RS.getString("breed"));
+				f.setSukunimi(RS.getString("sukunimi"));
 			}
 			return f;
 		}
