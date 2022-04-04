@@ -23,7 +23,7 @@ import data.Candidates;
 public class DeleteCandidates extends HttpServlet {
 	private Dao dao;
 	public void init() {
-		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "anna", "kukkuu");
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "vaaliqueen", "kukkuu");
 	}
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
