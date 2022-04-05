@@ -23,7 +23,14 @@
 
 	<ol>
 		<c:forEach var="ehdokkaat" items="${requestScope.candidateslist}" >
-			<li>${ehdokkaat.id}: ${ehdokkaat.sukunimi}, ${ehdokkaat.etunimi}, ${ehdokkaat.puolue}
+		<h4><li>${ehdokkaat.id}: 
+			${ehdokkaat.sukunimi}, 
+			${ehdokkaat.etunimi}, 
+			${ehdokkaat.ammatti},			
+			${ehdokkaat.kunta},
+			${ehdokkaat.puolue} </h4> <br>
+			${ehdokkaat.miksi}, <br>
+			${ehdokkaat.mita}	<br>
 			<a href='/deletecandidates?id=${ehdokkaat.id}'>delete</a> 
 			<a href='/readtoupdatecandidates?id=${ehdokkaat.id}'>update</a>
 		</c:forEach>
@@ -49,8 +56,11 @@ Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokka
 Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
 Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>
 Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokkaat.puolue}'><br>
+Ehdokkaan kotikunta: <input type='text' name='puolue' value='${requestScope.ehdokkaat.kunta}'><br>
 <input type='submit' name='ok' value='Send help'> 
 </form>
+
+ // Form täytettävä loppuun!!!1
 <footer>
 © Ansa Holttinen, Johanna Sieranoja & Anna Westerback
 </footer>
