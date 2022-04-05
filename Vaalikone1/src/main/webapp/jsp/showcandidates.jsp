@@ -16,7 +16,8 @@
 
 </head>
 <body>
-<header> TÄHÄN JOKU LOGO??
+<header>
+<img alt="" src="jsp/nimetön.png" width="600" height="300">
 </header>
 <h2>Tervetuloa vaalikoneeseen</h2>
 
