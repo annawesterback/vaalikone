@@ -59,6 +59,8 @@ Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokka
 Ehdokkaan kotikunta: <input type='text' name='puolue' value='${requestScope.ehdokkaat.kunta}'><br>
 <input type='submit' name='ok' value='Send help'> 
 </form>
+
+ // Form täytettävä loppuun!
 <footer>
 © Ansa Holttinen, Johanna Sieranoja & Anna Westerback
 </footer>
