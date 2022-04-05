@@ -56,11 +56,14 @@ Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokka
 Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
 Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>
 Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokkaat.puolue}'><br>
-Ehdokkaan kotikunta: <input type='text' name='puolue' value='${requestScope.ehdokkaat.kunta}'><br>
+Ehdokkaan kotikunta: <input type='text' name='kotikunta' value='${requestScope.ehdokkaat.kunta}'><br>
+Ehdokkaan ammatti: <input type='text' name='ammatti' value='${requestScope.ehdokkaat.ammatti}'><br>
+Ehdokkaan syy haluta eduskuntaan: <input type='text' name='miksi_eduskuntaan' value='${requestScope.ehdokkaat.miksi}'><br>
+Ehdokkaan edistaminen: <input type='text' name='mita_asioita_haluat_edistaa' value='${requestScope.ehdokkaat.mita}'><br>
 <input type='submit' name='ok' value='Send help'> 
 </form>
 
- // Form täytettävä loppuun!!!1
+ 
 <footer>
 © Ansa Holttinen, Johanna Sieranoja & Anna Westerback
 </footer>
