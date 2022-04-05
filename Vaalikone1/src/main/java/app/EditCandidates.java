@@ -29,14 +29,16 @@ public class EditCandidates extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException {
-		response.sendRedirect("index.html");
+		response.sendRedirect("index.html"); // TÄSSÄ täytyy olla sivu jossa editoidaan tietoja
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		String id=request.getParameter("ehdokas_id");
 		String sukunimi=request.getParameter("sukunimi");
+		String etunimi=request.getParameter("etunimi");
+		String puolue=request.getParameter("puolue");
 		
-		Candidates f=new Candidates(id, sukunimi);
+		Candidates f=new Candidates(id, sukunimi, etunimi, puolue);
 		
 		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {
