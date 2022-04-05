@@ -13,34 +13,47 @@
 <meta charset="UTF-8">
 <title>Vaalikone</title>
 
-<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-
-<!-- <script src="myscriptfile.js"></script> -->
 
 </head>
 <body>
+<header> TÄHÄN JOKU LOGO??
+</header>
 <h2>Tervetuloa vaalikoneeseen</h2>
 
-<!-- AHAA eli tässä käytetään JOKO TAI eli tämä alempi (tommi sano että vaikee) ja sitten tuo array list mikä on jspjavana -->
-<!-- eli sitä ois vissiin syytä käyttää. Ei toimi ainakaan vielä (videolla n. kohta 45min)-->
+
 	<ol>
 		<c:forEach var="ehdokkaat" items="${requestScope.candidateslist}" >
-			<li>${ehdokkaat.id}: ${ehdokkaat.sukunimi} <a href='/deletecandidates?id=${ehdokkaat.id}'>delete</a> <a href='/editcandidates?id=${ehdokkaat.id}'>update</a>
+			<li>${ehdokkaat.id}: ${ehdokkaat.sukunimi}, ${ehdokkaat.etunimi}, ${ehdokkaat.puolue}
+			<a href='/deletecandidates?id=${ehdokkaat.id}'>delete</a> 
+			<a href='/readtoupdatecandidates?id=${ehdokkaat.id}'>update</a>
 		</c:forEach>
 	</ol>
 
 <%
-ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
+// ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
 
-for (int i=0;candidatesList!=null && i<candidatesList.size();i++){
-	Candidates f=candidatesList.get(i);
-	out.println(f.getId()+": "+f.getSukunimi()+"<a href='/deletecandidates?id="+f.getId()+"'>deletecandidates</a> <a href='/?id="+f.getId()+"'>editcandidates</a>");
-}
+// for (int i=0;candidatesList!=null && i<candidatesList.size();i++){
+// 	Candidates f=candidatesList.get(i);
+// 	out.println(f.getId()+": "+f.getSukunimi()+
+// 			"<a href='/deletecandidates?id="+f.getId()+
+// 			"'>deletecandidates</a> <a href='/readtoupdatecandidates?id="+f.getId()+
+// 			"'>editcandidates</a>");
+// }
 %>
 
 <%--  <%@ include file="../html/somehtml.html" %> --%>
 
-
-
+<h3>Lisää uusi henkilö</h3>
+<form action='/jsp/addcandidates.jsp' method='post'>
+Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}'><br> 
+Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
+Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>
+Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokkaat.puolue}'><br>
+<input type='submit' name='ok' value='Send help'> 
+</form>
+<footer>
+© Ansa Holttinen, Johanna Sieranoja & Anna Westerback
+</footer>
 </body>
+
 </html>

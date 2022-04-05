@@ -43,7 +43,7 @@ public class Dao {
 			return false;
 		}
 		
-		//Luetaan kaikki ehdottaat taulusta
+		//Luetaan kaikki ehdokkaat taulusta
 	}
 	public ArrayList<Candidates> readAllCandidates() {
 		ArrayList<Candidates> list=new ArrayList<>();
@@ -54,6 +54,8 @@ public class Dao {
 				Candidates f=new Candidates();
 				f.setId(RS.getInt("ehdokas_id"));
 				f.setSukunimi(RS.getString("sukunimi"));
+				f.setEtunimi(RS.getString("etunimi"));
+				f.setPuolue(RS.getString("puolue"));
 				list.add(f);
 			}
 			return list;
@@ -69,7 +71,9 @@ public class Dao {
 			String sql="update ehdokkaat set sukunimi=? where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, f.getSukunimi());
-			pstmt.setInt(2, f.getId());
+			pstmt.setString(2, f.getEtunimi());
+			pstmt.setString(3, f.getPuolue());
+			pstmt.setInt(4, f.getId());
 			pstmt.executeUpdate();
 			return readAllCandidates();
 		}
@@ -77,6 +81,23 @@ public class Dao {
 			return null;
 		}
 		
+		//Lisätään tietoja TÄMÄ ON KESKEN
+		}
+		public ArrayList<Candidates> addCandidates(Candidates f) {
+			try {
+				String sql="insert into ehdokkaat set sukunimi=? where ehdokas_id=? set etunimi=? set puolue=?";
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, f.getSukunimi());
+				pstmt.setString(2, f.getEtunimi());
+				pstmt.setString(3, f.getPuolue());
+				pstmt.setInt(4, f.getId());
+				pstmt.executeUpdate();
+				return readAllCandidates();
+			}
+			catch(SQLException e) {
+				return null;
+			}
+			
 		// Poistetaan tietoja
 	}
 	public ArrayList<Candidates> deleteCandidates(String id) {
@@ -105,6 +126,8 @@ public class Dao {
 				f=new Candidates();
 				f.setId(RS.getInt("id"));
 				f.setSukunimi(RS.getString("sukunimi"));
+				f.setEtunimi(RS.getString("etunimi"));
+				f.setPuolue(RS.getString("puolue"));
 			}
 			return f;
 		}

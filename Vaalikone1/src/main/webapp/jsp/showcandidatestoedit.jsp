@@ -3,6 +3,7 @@
     
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+ <style><%@include file="/jsp/style.css"%></style>
     
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,10 @@
 <body>
 <h2>Muokkaa vaalikonetta</h2>
 <form action='update' method='post'>
-Fish id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}' readonly><br> 
-Fish breed: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
+Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}' readonly><br> 
+Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
+Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>
+Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokkaat.puolue}'><br>
 <input type='submit' name='ok' value='Send'> 
 </form>
 </body>
