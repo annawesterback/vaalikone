@@ -1,43 +1,52 @@
-// Tässä ei ole vielä mitään sisältöä, alla oleva paska on automatic servlet sisältö
+// Tässä kopsattu fisujen update
 
 package app;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AddCandidates
- */
-@WebServlet("/addcandidates")
+import dao.Dao;
+import data.Candidates;
+
+@WebServlet(
+    name = "AddCandidates",
+    urlPatterns = {"/addcandidates"}
+)
+
+// Tähän myös oikea database
 public class AddCandidates extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddCandidates() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	private Dao dao;
+	public void init() {
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "vaaliqueen", "kukkuu");
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+	     throws IOException {
+		response.sendRedirect("index.html"); // TÄSSÄ täytyy olla sivu jossa editoidaan tietoja
 	}
-
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+	     throws IOException, ServletException {
+		String id=request.getParameter("ehdokas_id");
+		String sukunimi=request.getParameter("sukunimi");
+		String etunimi=request.getParameter("etunimi");
+		String puolue=request.getParameter("puolue");
+		
+		Candidates f=new Candidates(id, sukunimi, etunimi, puolue);
+		
+		ArrayList<Candidates> list=null;
+		if (dao.getConnection()) {
+			list=dao.addCandidates(f);
+		}
+		
+		request.setAttribute("candidateslist", list);
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidates.jsp");
+		rd.forward(request, response);
+	}
 }
