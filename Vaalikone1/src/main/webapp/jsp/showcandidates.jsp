@@ -38,11 +38,13 @@
 	</ol>
 
 <%
+
+
 // ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
 
 // for (int i=0;candidatesList!=null && i<candidatesList.size();i++){
 // 	Candidates f=candidatesList.get(i);
-// 	out.println(f.getId()+": "+f.getSukunimi()+
+// 	System.out.println(f.getId()+": "+f.getSukunimi()+
 // 			"<a href='/deletecandidates?id="+f.getId()+
 // 			"'>deletecandidates</a> <a href='/readtoupdatecandidates?id="+f.getId()+
 // 			"'>editcandidates</a>");

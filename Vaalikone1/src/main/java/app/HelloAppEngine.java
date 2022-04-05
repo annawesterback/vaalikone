@@ -1,6 +1,7 @@
 package app;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,9 @@ public class HelloAppEngine extends HttpServlet {
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF-8");
 
+    
+    PrintWriter out = response.getWriter();
+    out.print("Hello World");
     //Videolla tämä copypastettiin showcandidates.jsp stä MUTTA tähän lisättiin joku reader?
 //    ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
 //
@@ -36,7 +40,7 @@ public class HelloAppEngine extends HttpServlet {
     
     
     
-    response.getWriter().print("Hello App Engine!\r\n");
+   // response.getWriter().print("Hello App Engine!\r\n");
 
   }
 }

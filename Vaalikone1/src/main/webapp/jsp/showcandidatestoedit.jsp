@@ -13,7 +13,7 @@
 </head>
 <body>
 <h2>Muokkaa vaalikonetta</h2>
-<form action='update' method='post'>
+<form action='/jsp/showcandidates.jsp' method='post'>
 Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}' readonly><br> 
 Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
 Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>
