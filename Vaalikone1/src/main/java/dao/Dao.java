@@ -55,7 +55,13 @@ public class Dao {
 				f.setId(RS.getInt("ehdokas_id"));
 				f.setSukunimi(RS.getString("sukunimi"));
 				f.setEtunimi(RS.getString("etunimi"));
+				f.setKunta(RS.getString("kotipaikkakunta"));
 				f.setPuolue(RS.getString("puolue"));
+				f.setAmmatti(RS.getString("ammatti"));
+				f.setMiksi(RS.getString("miksi_eduskuntaan"));
+				f.setMita(RS.getString("mita_asioita_haluat_edistaa"));
+
+				
 				list.add(f);
 			}
 			return list;
@@ -72,8 +78,12 @@ public class Dao {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, f.getSukunimi());
 			pstmt.setString(2, f.getEtunimi());
-			pstmt.setString(3, f.getPuolue());
-			pstmt.setInt(4, f.getId());
+			pstmt.setString(3, f.getKunta());
+			pstmt.setString(4, f.getPuolue());
+			pstmt.setString(5, f.getAmmatti());
+			pstmt.setString(6, f.getMiksi());
+			pstmt.setString(7, f.getMita());
+			pstmt.setInt(8, f.getId());
 			pstmt.executeUpdate();
 			return readAllCandidates();
 		}
@@ -85,12 +95,17 @@ public class Dao {
 		}
 		public ArrayList<Candidates> addCandidates(Candidates f) {
 			try {
-				String sql="insert into ehdokkaat set sukunimi=? where ehdokas_id=? set etunimi=? set puolue=?";
+				String sql="insert into ehdokkaat set sukunimi=? set etunimi=? set kotipaikkakunta=? set puolue=? set ammatti=? set miksi_eduskuntaan=? set mita_asoita_halaut_edistaa=?where ehdokas_id=?";
+				
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				pstmt.setString(1, f.getSukunimi());
 				pstmt.setString(2, f.getEtunimi());
-				pstmt.setString(3, f.getPuolue());
-				pstmt.setInt(4, f.getId());
+				pstmt.setString(3, f.getKunta());
+				pstmt.setString(4, f.getPuolue());
+				pstmt.setString(5, f.getAmmatti());
+				pstmt.setString(6, f.getMiksi());
+				pstmt.setString(7, f.getMita());
+				pstmt.setInt(8, f.getId());
 				pstmt.executeUpdate();
 				return readAllCandidates();
 			}
@@ -127,7 +142,12 @@ public class Dao {
 				f.setId(RS.getInt("id"));
 				f.setSukunimi(RS.getString("sukunimi"));
 				f.setEtunimi(RS.getString("etunimi"));
+				f.setKunta(RS.getString("kotipaikkakunta"));
 				f.setPuolue(RS.getString("puolue"));
+				f.setAmmatti(RS.getString("ammatti"));
+				f.setMiksi(RS.getString("miksi_eduskuntaan"));
+				f.setMita(RS.getString("mita_asioita_haluat_edistaa"));
+
 			}
 			return f;
 		}
