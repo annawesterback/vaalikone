@@ -19,7 +19,7 @@ import data.Candidates;
     name = "EditCandidates",
     urlPatterns = {"/editcandidates"}
 )
-
+//kikkkk
 // Tähän myös oikea database
 public class EditCandidates extends HttpServlet {
 	private Dao dao;
