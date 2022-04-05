@@ -3,6 +3,7 @@
  
  <%@ page import="java.util.ArrayList" %>   
  <%@ page import="data.Candidates" %>   
+ <style><%@include file="/jsp/style.css"%></style>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
@@ -12,10 +13,9 @@
 <meta charset="UTF-8">
 <title>Vaalikone</title>
 
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 
-<!-- Tohon hreffiin tehdään joku css filu? -->
-<link rel="stylesheet" type="text/css" href="mycssfilesomewhere.css">
-<script src="myscriptfile.js"></script>
+<!-- <script src="myscriptfile.js"></script> -->
 
 </head>
 <body>
@@ -24,7 +24,7 @@
 <!-- AHAA eli tässä käytetään JOKO TAI eli tämä alempi (tommi sano että vaikee) ja sitten tuo array list mikä on jspjavana -->
 <!-- eli sitä ois vissiin syytä käyttää. Ei toimi ainakaan vielä (videolla n. kohta 45min)-->
 	<ol>
-		<c:forEach var="candidates" items="${requestScope.candidateslist}" >
+		<c:forEach var="ehdokkaat" items="${requestScope.candidateslist}" >
 			<li>${ehdokkaat.id}: ${ehdokkaat.sukunimi} <a href='/deletecandidates?id=${ehdokkaat.id}'>delete</a> <a href='/editcandidates?id=${ehdokkaat.id}'>update</a>
 		</c:forEach>
 	</ol>
