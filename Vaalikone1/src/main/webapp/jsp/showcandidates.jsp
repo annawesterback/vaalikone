@@ -23,16 +23,16 @@
 
 	<ol>
 		<c:forEach var="ehdokkaat" items="${requestScope.candidateslist}" >
-		<h4><li>${ehdokkaat.id}: 
+		<h3><li>${ehdokkaat.id}: 
 			${ehdokkaat.sukunimi}, 
 			${ehdokkaat.etunimi}, 
 			${ehdokkaat.ammatti},			
 			${ehdokkaat.kunta},
-			${ehdokkaat.puolue} </h4> <br>
-			${ehdokkaat.miksi}, <br>
+			${ehdokkaat.puolue} </h3>
+			<h4> ${ehdokkaat.miksi}, <br>
 			${ehdokkaat.mita}	<br>
 			<a href='/deletecandidates?id=${ehdokkaat.id}'>delete</a> 
-			<a href='/readtoupdatecandidates?id=${ehdokkaat.id}'>update</a>
+			<a href='/readtoupdatecandidates?id=${ehdokkaat.id}'>update</a></h4>
 		</c:forEach>
 	</ol>
 
