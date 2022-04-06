@@ -21,7 +21,6 @@
 </header>
 <h2>Tervetuloa vaalikoneeseen</h2>
 
-
 	<ol>
 		<c:forEach var="ehdokkaat" items="${requestScope.candidateslist}" >
 		<h4><li>${ehdokkaat.id}: 
@@ -38,8 +37,8 @@
 	</ol>
 
 <%
-
-
+// SCRIPLETTI - jos ei käytetä taglibrarya, niin käytä javakoodia
+// tämä voiso olla DO-GET metodin sisällä HelloAppEngine
 // ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
 
 // for (int i=0;candidatesList!=null && i<candidatesList.size();i++){
@@ -66,7 +65,6 @@ Ehdokkaan edistaminen: <input type='text' name='mita_asioita_haluat_edistaa' val
 <input type='submit' name='ok' value='Send help'> 
 </form>
 
- 
 <footer>
 © Ansa Holttinen, Johanna Sieranoja & Anna Westerback
 </footer>

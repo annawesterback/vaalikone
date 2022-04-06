@@ -13,12 +13,13 @@ import data.Candidates;
 
 import java.sql.Connection;
 
-public class Dao {
+public class Dao { 
 	private String url;
 	private String user;
 	private String pass;
 	private Connection conn;
 	
+	// Luo yhteys tietokantaan rakentajassa
 	public Dao(String url, String user, String pass) {
 		this.url=url;
 		this.user=user;
@@ -42,6 +43,8 @@ public class Dao {
 			System.out.println(e.getMessage());
 			return false;
 		}
+		
+		// DAO luokasta tietokantaoperaatiot omiin metodeihinsa
 		
 		//Luetaan kaikki ehdokkaat taulusta
 	}
@@ -118,10 +121,10 @@ public class Dao {
 	public ArrayList<Candidates> deleteCandidates(String id) {
 		try {
 			String sql="delete from ehdokkaat where ehdokas_id=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
-			return readAllCandidates();
+			PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
+			pstmt.setString(1, id); // aseta tietokantakyselyn indeksi
+			pstmt.executeUpdate(); // p‰ivit‰ taulu
+			return readAllCandidates(); // n‰yt‰ p‰ivitetty taulu, viesti p‰ivityksen onnistumisest‰ riitt‰‰
 		}
 		catch(SQLException e) {
 			return null;
