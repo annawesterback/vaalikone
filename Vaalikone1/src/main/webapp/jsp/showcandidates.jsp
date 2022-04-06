@@ -39,7 +39,6 @@
 
 <%
 
-
 // ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
 
 // for (int i=0;candidatesList!=null && i<candidatesList.size();i++){
