@@ -21,7 +21,6 @@
 </header>
 <h2>Tervetuloa vaalikoneeseen</h2>
 
-
 	<ol>
 		<c:forEach var="ehdokkaat" items="${requestScope.candidateslist}" >
 		<h4><li>${ehdokkaat.id}: 
@@ -38,8 +37,8 @@
 	</ol>
 
 <%
-
-
+// SCRIPLETTI - jos ei käytetä taglibrarya, niin käytä javakoodia
+// tämä voiso olla DO-GET metodin sisällä HelloAppEngine
 // ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
 
 // for (int i=0;candidatesList!=null && i<candidatesList.size();i++){
@@ -54,7 +53,7 @@
 <%--  <%@ include file="../html/somehtml.html" %> --%>
 
 <h3>Lisää uusi henkilö</h3>
-<form action='/jsp/addcandidates.jsp' method='post'>
+<form action='/addcandidates' method='post'>
 Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}'><br> 
 Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
 Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>

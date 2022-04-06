@@ -38,7 +38,7 @@ public class HelloAppEngine extends HttpServlet {
     
     //ja tässä kutsutaan sitä metodia
     
-    
+    // jotain paskaa
     
    // response.getWriter().print("Hello App Engine!\r\n");
 

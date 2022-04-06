@@ -102,4 +102,7 @@ public class Candidates {
 	public void setMita(String mita) {
 	this.mita = mita;
 	}
+	public String toString() {
+		return String.format("id:%s, sukunimi:%s, etunimi:%s, kunta:%s, puolue:%s, ammatti:%s, miksi:%s, mita:%s", id, sukunimi, etunimi, kunta, puolue, ammatti, miksi, mita);
+	}
 }

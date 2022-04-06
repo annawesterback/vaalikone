@@ -36,7 +36,6 @@ public class EditCandidates extends HttpServlet {
 		String id=request.getParameter("ehdokas_id");
 		String sukunimi=request.getParameter("sukunimi");
 		String etunimi=request.getParameter("etunimi");
-		// ika
 		String kunta=request.getParameter("kotipaikkakunta");
 		String puolue=request.getParameter("puolue");
 		String ammatti=request.getParameter("ammatti");
@@ -45,6 +44,7 @@ public class EditCandidates extends HttpServlet {
 
 		
 		Candidates f=new Candidates(id, sukunimi, etunimi, kunta, puolue, ammatti, miksi, mita);
+		System.out.println("update: "+ f.toString());
 		
 		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {

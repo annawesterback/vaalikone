@@ -9,7 +9,7 @@
 </head>
 <body>
 
-Tähän täytyy lisätä send files to sql ??+
+
 
 </body>
 </html>
