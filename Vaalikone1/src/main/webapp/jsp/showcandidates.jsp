@@ -53,7 +53,7 @@
 <%--  <%@ include file="../html/somehtml.html" %> --%>
 
 <h3>Lisää uusi henkilö</h3>
-<form action='/jsp/addcandidates.jsp' method='post'>
+<form action='/addcandidates' method='post'>
 Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}'><br> 
 Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
 Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>

@@ -40,10 +40,11 @@ public class AddCandidates extends HttpServlet {
 		String puolue=request.getParameter("puolue");
 		String ammatti=request.getParameter("ammatti");
 		String miksi=request.getParameter("miksi_eduskuntaan");
-		String mita=request.getParameter("mita_asoita_haluat_edistaa");
+		String mita=request.getParameter("mita_asioita_haluat_edistaa");
 
 		
 		Candidates f=new Candidates(id, sukunimi, etunimi, kunta, puolue, ammatti, miksi, mita);
+		System.out.println("update: "+ f.toString());
 		
 		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {

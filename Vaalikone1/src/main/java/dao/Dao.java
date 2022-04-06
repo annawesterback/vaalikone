@@ -77,7 +77,10 @@ public class Dao {
 	}
 	public ArrayList<Candidates> updateCandidates(Candidates f) {
 		try {
-			String sql="update ehdokkaat set sukunimi=? where ehdokas_id=?";
+			String sql="update ehdokkaat set "
+					+ " sukunimi=?, etunimi=?, kotipaikkakunta=?, puolue=?, ammatti=? "
+					+ ", miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=? where ehdokas_id=?";
+			
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, f.getSukunimi());
 			pstmt.setString(2, f.getEtunimi());
@@ -98,7 +101,9 @@ public class Dao {
 		}
 		public ArrayList<Candidates> addCandidates(Candidates f) {
 			try {
-				String sql="insert into ehdokkaat set sukunimi=? set etunimi=? set kotipaikkakunta=? set puolue=? set ammatti=? set miksi_eduskuntaan=? set mita_asoita_halaut_edistaa=?where ehdokas_id=?";
+				String sql="insert into ehdokkaat"
+						+ "(ehdokas_id ,sukunimi, etunimi, kunta, puolue, ammatti,"
+						+ "miksi_eduskuntaan, mita_asioita_haluat_edistaa) VALUES (?,?,?,?,?,?,?,?)";
 				
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				pstmt.setString(1, f.getSukunimi());
