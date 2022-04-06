@@ -30,8 +30,3 @@
 </html>
 
 
-<!-- Käyttäjätunnus:<input type="text" name="username"/><br/><br/>   -->
-<!-- Salasana:<input type="password" name="password"/><br/><br/>   -->
-<!-- <input type="submit" value="Kirjaudu sisään"/>  </form> -->
-<!-- </body> -->
-<!-- </html> -->
