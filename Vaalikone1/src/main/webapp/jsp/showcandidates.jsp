@@ -39,15 +39,7 @@
 <%
 // SCRIPLETTI - jos ei käytetä taglibrarya, niin käytä javakoodia
 // tämä voiso olla DO-GET metodin sisällä HelloAppEngine
-// ArrayList<Candidates> candidatesList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
 
-// for (int i=0;candidatesList!=null && i<candidatesList.size();i++){
-// 	Candidates f=candidatesList.get(i);
-// 	System.out.println(f.getId()+": "+f.getSukunimi()+
-// 			"<a href='/deletecandidates?id="+f.getId()+
-// 			"'>deletecandidates</a> <a href='/readtoupdatecandidates?id="+f.getId()+
-// 			"'>editcandidates</a>");
-// }
 %>
 
 <%--  <%@ include file="../html/somehtml.html" %> --%>
@@ -58,7 +50,7 @@ Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokka
 Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
 Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>
 Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokkaat.puolue}'><br>
-Ehdokkaan kotikunta: <input type='text' name='kotikunta' value='${requestScope.ehdokkaat.kunta}'><br>
+Ehdokkaan kotikunta: <input type='text' name='kotipaikkakunta' value='${requestScope.ehdokkaat.kunta}'><br>
 Ehdokkaan ammatti: <input type='text' name='ammatti' value='${requestScope.ehdokkaat.ammatti}'><br>
 Ehdokkaan syy haluta eduskuntaan: <input type='text' name='miksi_eduskuntaan' value='${requestScope.ehdokkaat.miksi}'><br>
 Ehdokkaan edistaminen: <input type='text' name='mita_asioita_haluat_edistaa' value='${requestScope.ehdokkaat.mita}'><br>

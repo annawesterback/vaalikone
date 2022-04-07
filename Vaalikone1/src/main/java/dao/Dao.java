@@ -43,11 +43,11 @@ public class Dao {
 			System.out.println(e.getMessage());
 			return false;
 		}
+	
 		
-		// DAO luokasta tietokantaoperaatiot omiin metodeihinsa
-		
-		//Luetaan kaikki ehdokkaat taulusta
 	}
+		//Luetaan kaikki ehdokkaat taulusta
+	
 	public ArrayList<Candidates> readAllCandidates() {
 		ArrayList<Candidates> list=new ArrayList<>();
 		try {
@@ -63,8 +63,7 @@ public class Dao {
 				f.setAmmatti(RS.getString("ammatti"));
 				f.setMiksi(RS.getString("miksi_eduskuntaan"));
 				f.setMita(RS.getString("mita_asioita_haluat_edistaa"));
-
-				
+			
 				list.add(f);
 			}
 			return list;
@@ -73,13 +72,14 @@ public class Dao {
 			return null;
 		}
 		
-		//P‰ivitet‰‰n tietoja
 	}
+		//P‰ivitet‰‰n tietoja
+	
 	public ArrayList<Candidates> updateCandidates(Candidates f) {
+		String sql="update ehdokkaat set "
+				+ " sukunimi=?, etunimi=?, kotipaikkakunta=?, puolue=?, ammatti=? "
+				+ ", miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=? where ehdokas_id=?";
 		try {
-			String sql="update ehdokkaat set "
-					+ " sukunimi=?, etunimi=?, kotipaikkakunta=?, puolue=?, ammatti=? "
-					+ ", miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=? where ehdokas_id=?";
 			
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, f.getSukunimi());
@@ -94,54 +94,60 @@ public class Dao {
 			return readAllCandidates();
 		}
 		catch(SQLException e) {
+			System.out.println(String.format("Virhe ehdokkaan muokkaamisessa:%s,%s", sql,e.toString()));
 			return null;
 		}
 		
-		//Lis‰t‰‰n tietoja TƒMƒ ON KESKEN
-		}
+	}
+		//Lis‰t‰‰n tietoja
+	
 		public ArrayList<Candidates> addCandidates(Candidates f) {
+			String sql="insert into ehdokkaat"
+					+ "(ehdokas_id ,sukunimi, etunimi, kotipaikkakunta, puolue, ammatti,"
+					+ "miksi_eduskuntaan, mita_asioita_haluat_edistaa) VALUES (?,?,?,?,?,?,?,?)";
 			try {
-				String sql="insert into ehdokkaat"
-						+ "(ehdokas_id ,sukunimi, etunimi, kunta, puolue, ammatti,"
-						+ "miksi_eduskuntaan, mita_asioita_haluat_edistaa) VALUES (?,?,?,?,?,?,?,?)";
 				
 				PreparedStatement pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, f.getSukunimi());
-				pstmt.setString(2, f.getEtunimi());
-				pstmt.setString(3, f.getKunta());
-				pstmt.setString(4, f.getPuolue());
-				pstmt.setString(5, f.getAmmatti());
-				pstmt.setString(6, f.getMiksi());
-				pstmt.setString(7, f.getMita());
-				pstmt.setInt(8, f.getId());
+				pstmt.setInt(1, f.getId());
+				pstmt.setString(2, f.getSukunimi());
+				pstmt.setString(3, f.getEtunimi());
+				pstmt.setString(4, f.getKunta());
+				pstmt.setString(5, f.getPuolue());
+				pstmt.setString(6, f.getAmmatti());
+				pstmt.setString(7, f.getMiksi());
+				pstmt.setString(8, f.getMita());
 				pstmt.executeUpdate();
 				return readAllCandidates();
 			}
 			catch(SQLException e) {
+				System.out.println(String.format("Virhe ehdokkaan lis‰‰misess‰:%s,%s", sql,e.toString()));
 				return null;
 			}
-			
-		// Poistetaan tietoja
+		
 	}
-	public ArrayList<Candidates> deleteCandidates(String id) {
-		try {
+			// Poistetaan tietoja
+		
+		public ArrayList<Candidates> deleteCandidates(String id) {
 			String sql="delete from ehdokkaat where ehdokas_id=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
-			pstmt.setString(1, id); // aseta tietokantakyselyn indeksi
-			pstmt.executeUpdate(); // p‰ivit‰ taulu
-			return readAllCandidates(); // n‰yt‰ p‰ivitetty taulu, viesti p‰ivityksen onnistumisest‰ riitt‰‰
-		}
-		catch(SQLException e) {
+			
+			try {
+				PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
+				pstmt.setString(1, id); // aseta tietokantakyselyn indeksi
+				pstmt.executeUpdate(); // p‰ivit‰ taulu
+				return readAllCandidates(); // n‰yt‰ p‰ivitetty taulu, viesti p‰ivityksen onnistumisest‰ riitt‰‰
+			}
+			catch(SQLException e) {
+				System.out.println(String.format("Virhe ehdokkaan poistamisessa:%s,%s", sql,e.toString()));
 			return null;
-		}
+			}
 	}
 	
 	// Luetaan tietoja
 
 	public Candidates readCandidates(String id) {
 		Candidates f=null;
+		String sql="select * from ehokkaat where ehdokas_id=?";
 		try {
-			String sql="select * from ehokkaat where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet RS=pstmt.executeQuery();
@@ -160,6 +166,7 @@ public class Dao {
 			return f;
 		}
 		catch(SQLException e) {
+			System.out.println(String.format("Virhe tietojen hakemisessa:%s,%s", sql,e.toString()));
 			return null;
 		}
 	}

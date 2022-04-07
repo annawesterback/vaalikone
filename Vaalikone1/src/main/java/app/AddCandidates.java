@@ -29,7 +29,7 @@ public class AddCandidates extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException {
-		response.sendRedirect("index.html"); // TÄSSÄ täytyy olla sivu jossa editoidaan tietoja
+		response.sendRedirect("index.html"); 
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
@@ -44,7 +44,7 @@ public class AddCandidates extends HttpServlet {
 
 		
 		Candidates f=new Candidates(id, sukunimi, etunimi, kunta, puolue, ammatti, miksi, mita);
-		System.out.println("update: "+ f.toString());
+		System.out.println("insert: "+ f.toString());
 		
 		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {
@@ -53,6 +53,7 @@ public class AddCandidates extends HttpServlet {
 		
 		request.setAttribute("candidateslist", list);
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidates.jsp");
-		rd.forward(request, response);
+//		rd.forward(request, response);
+		response.sendRedirect("/showcandidates");
 	}
 }
