@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import data.Candidates;
+import data.Questions;
 
 import java.sql.Connection;
 
@@ -169,5 +170,102 @@ public class Dao {
 			System.out.println(String.format("Virhe tietojen hakemisessa:%s,%s", sql,e.toString()));
 			return null;
 		}
+	}
+
+// KYSYMYSTEN METODIT
+	
+	//Luetaan kaikki KYSYMYKSET taulusta
+		public ArrayList<Questions> readAllQuestions() {
+			ArrayList<Questions> list=new ArrayList<>();
+			try {
+				Statement stmt=conn.createStatement();
+				ResultSet RS=stmt.executeQuery("select * from kysymykset");
+				while (RS.next()){
+					Questions f=new Questions();
+					f.setId(RS.getInt("kysymys_id"));
+					f.setKysymys(RS.getString("kysymys"));
+					
+					list.add(f);
+				}
+				return list;
+			}
+			catch(SQLException e) {
+				return null;
+			}
+			
+		}
+		
+	// Luetaan 	KYSYMYKSIÄ
+		public Questions readQuestions(String id) {
+			Questions f=null;
+			String sql="select * from kysymykset where kysymys_id=?";
+			try {
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				ResultSet RS=pstmt.executeQuery();
+				while (RS.next()){
+					f=new Questions();
+					f.setId(RS.getInt("kysymys_id"));
+					f.setKysymys(RS.getString("kysymys"));
+				}
+				return f;
+			}
+			catch(SQLException e) {
+				System.out.println(String.format("Virhe tietojen hakemisessa:%s,%s", sql,e.toString()));
+				return null;
+			}
+		}
+		
+	//Päivitetään KYSYMYKSIÄ
+	public ArrayList<Questions> updateQuestions(Questions f) {
+		String sql="update kysymykset set "
+				+ "kysymys=?"
+				+ "kysymys=? where kysymys_id=?";
+		try {
+			
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, f.getKysymys());
+			pstmt.setInt(2, f.getId());
+			pstmt.executeUpdate();
+			return readAllQuestions();
+		}
+		catch(SQLException e) {
+			System.out.println(String.format("Virhe kysymyksen muokkaamisessa:%s,%s", sql,e.toString()));
+			return null;
+		}
+		
+	}
+	//Lisätään KYSYMYKSIÄ
+		public ArrayList<Questions> addQuestions(Questions f) {
+			String sql="insert into kysymykset"
+					+ "(kysymys_ID ,kysymys,"
+					+ "kysymys) VALUES (?,?,?,?,?,?,?,?)";
+			try {
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1, f.getId());
+				pstmt.setString(2, f.getKysymys());
+				pstmt.executeUpdate();
+				return readAllQuestions();
+			}
+			catch(SQLException e) {
+				System.out.println(String.format("Virhe kysymyksen lisäämisessä:%s,%s", sql,e.toString()));
+				return null;
+			}
+		
+	}
+		// Poistetaan KYSYMYKSIÄ
+		public ArrayList<Questions> deleteQuestions(String kysymys_ID) {
+			String sql="delete from kysymykset where kysymys_ID=?";
+			
+			try {
+				PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
+				pstmt.setString(1, kysymys_ID); // aseta tietokantakyselyn indeksi
+				pstmt.executeUpdate(); // päivitä taulu
+				return readAllQuestions(); // näytä päivitetty taulu, viesti päivityksen onnistumisestä riittää
+			}
+			catch(SQLException e) {
+				System.out.println(String.format("Virhe kysymyksen poistamisessa:%s,%s", sql,e.toString()));
+			return null;
+			}
 	}
 }
