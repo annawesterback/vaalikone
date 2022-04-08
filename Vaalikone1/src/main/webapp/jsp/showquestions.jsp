@@ -23,23 +23,17 @@
 
 	<ol>
 		<c:forEach var="kysymykset" items="${requestScope.questionslist}" >
-		<h3><li>${kysymykset.kysymys_id}: 
-			${kysymykset.kysymys}, </h3>
+		<h3><li>${kysymykset.id}:
+			${kysymykset.kysymys} </h3>
 			<a href='/deletequestions?id=${kysymykset.id}'>delete</a> 
 			<a href='/readtoupdatequestions?id=${kysymykset.id}'>update</a></h4>
 		</c:forEach>
 	</ol>
 
-<%
-// SCRIPLETTI - jos ei käytetä taglibrarya, niin käytä javakoodia
-// tämä voiso olla DO-GET metodin sisällä HelloAppEngine
-
-%>
-
-<%--  <%@ include file="../html/somehtml.html" %> --%>
-
 <h3>Lisää uusi KYSYMYS</h3>
 <form action='/addquestions' method='post'>
+Kysymyksen ID: <input type='text' name='kysymys_id' value='${requestScope.kysymykset.id}'><br> 
+Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysymys}'><br>
 <input type='submit' name='ok' value='Send help'> 
 </form>
 

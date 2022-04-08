@@ -211,7 +211,7 @@ public class Dao {
 				return f;
 			}
 			catch(SQLException e) {
-				System.out.println(String.format("Virhe tietojen hakemisessa:%s,%s", sql,e.toString()));
+				System.out.println(String.format("Virhe kysymystietojen hakemisessa:%s,%s", sql,e.toString()));
 				return null;
 			}
 		}
@@ -219,7 +219,6 @@ public class Dao {
 	//Päivitetään KYSYMYKSIÄ
 	public ArrayList<Questions> updateQuestions(Questions f) {
 		String sql="update kysymykset set "
-				+ "kysymys=?"
 				+ "kysymys=? where kysymys_id=?";
 		try {
 			
@@ -238,8 +237,7 @@ public class Dao {
 	//Lisätään KYSYMYKSIÄ
 		public ArrayList<Questions> addQuestions(Questions f) {
 			String sql="insert into kysymykset"
-					+ "(kysymys_ID ,kysymys,"
-					+ "kysymys) VALUES (?,?,?,?,?,?,?,?)";
+					+ "(kysymys_ID, kysymys) VALUES (?,?)";
 			try {
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				pstmt.setInt(1, f.getId());
