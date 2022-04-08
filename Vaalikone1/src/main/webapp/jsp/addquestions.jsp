@@ -9,7 +9,14 @@
 </head>
 <body>
 
+
+
 <h3>Lis‰‰ uusi KYSYMYS</h3>
+<br>
+
+
+<a href='/ShowQuestions'>Takaisin kysymyksiin</a> <br><br>
+<a href='/mainpage'>Takaisin p‰‰sivulle</a>
 <form action='/addquestions' method='post'>
 Kysymyksen ID: <input type='text' name='kysymys_id' value='${requestScope.kysymykset.id}'><br> 
 Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysymys}'><br>
@@ -18,7 +25,8 @@ Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysy
 
 <br>
 <br>
-<a href='/mainpage'>Takaisin p‰‰sivulle</a>
+
+
 
 </body>
 </html>

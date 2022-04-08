@@ -23,6 +23,8 @@
 
 <br>
 <br>
+
+<h3> <a href='/addquestions'>Lisää uusi kysymys</a> </h3>
 <a href='/mainpage'>Takaisin pääsivulle</a>
 
 	<ol>
