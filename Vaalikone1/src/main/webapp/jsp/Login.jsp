@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<form method="post" action="/LoginCheck">
+<div>
+	<form  method="post" action="/LoginCheck">
 		<table>
 			<tr>
 				<td>Käyttäjätunnus</td>
@@ -26,6 +26,7 @@
 			
 		</table>
 	</form>
+	</div>
 </body>
 </html>
 
