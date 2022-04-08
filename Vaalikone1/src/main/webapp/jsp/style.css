@@ -45,9 +45,7 @@ form {
     margin-top: 100px;
     
     height: 110px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    background-color: #f8f8f8;
+    
     resize: none;
     font-size: 20;
   

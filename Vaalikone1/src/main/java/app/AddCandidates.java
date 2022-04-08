@@ -29,7 +29,7 @@ public class AddCandidates extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException {
-		response.sendRedirect("index.html"); 
+		response.sendRedirect("jsp/addcandidates.jsp"); 
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
