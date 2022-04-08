@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginCheck
+ * Servlet implementation class MainPage
  */
-@WebServlet("LoginCheck")
-public class LoginCheck extends HttpServlet {
+@WebServlet("/mainpage")
+public class MainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginCheck() {
+    public MainPage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,30 +29,17 @@ public class LoginCheck extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("").append(request.getContextPath());
+		
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/mainpage.jsp"); //tämä luo meille näkymän, jsp = view osan servletti, muut back-end
+		rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		
-		
-	
-		if (username.equals("Admin") && password.equals("admin123"))
-		{
-			response.sendRedirect("/mainpage");
-			
-		}
-		
-		
-		else {
-			
-			response.sendRedirect("jsp/error.jsp");
-		}
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -27,7 +27,8 @@ public class AddQuestions extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException {
-		response.sendRedirect("index.html"); 
+		response.sendRedirect("jsp/addquestions.jsp"); 
+		// response.sendRedirect("index.html"); 
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {

@@ -42,7 +42,6 @@ public class AddCandidates extends HttpServlet {
 		String miksi=request.getParameter("miksi_eduskuntaan");
 		String mita=request.getParameter("mita_asioita_haluat_edistaa");
 
-		
 		Candidates f=new Candidates(id, sukunimi, etunimi, kunta, puolue, ammatti, miksi, mita);
 		System.out.println("insert: "+ f.toString());
 		
