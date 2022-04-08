@@ -17,7 +17,7 @@
 </head>
 <body>
 <header>
-<img alt="" src="jsp/nimetön.png" width="600" height="300">
+<img alt="" src="jsp/vote.png" alt="vote" class="center">
 </header>
 <h2>Tervetuloa vaalikoneeseen</h2>
 

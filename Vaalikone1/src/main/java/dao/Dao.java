@@ -146,7 +146,7 @@ public class Dao {
 
 	public Candidates readCandidates(String id) {
 		Candidates f=null;
-		String sql="select * from ehokkaat where ehdokas_id=?";
+		String sql="select * from ehdokkaat where ehdokas_id=?";
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
