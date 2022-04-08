@@ -1,14 +1,16 @@
 @charset "ISO-8859-1";
 body{
-  background-color: #D7CEC7;
-  color: #565656;
-  font-family: Garamond, serif;
+    background-color: #D7CEC7;
+    color: #565656;
+    font-family: Garamond, serif;
+    font-size: 16px;
+  	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
 
 h2 {
 	color: #76323F;
-	margin-left: auto;
-	margin-right: auto;
 	display: block;
 	padding-top: 6px;
 	padding-left: 9px;
@@ -16,32 +18,20 @@ h2 {
 	left: 50;
 	margin-top: 0px;
 	margin-bottom: 0px;
-}
-
-h4 {
-	font-size: 16px;
-}
-
-ol {
 	margin-left: auto;
 	margin-right: auto;
-	display: block;
-	padding-top: 6px;
-	padding-left: 9px;
-	position:relative;
-	left: 50;
-	margin-top: 0px;
-	margin-bottom: 0px;
 }
 
 footer {
     color: #76323F;
 }
 
+/*Logon keskitys*/
 .center {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 300px;
+	width: 100%;
+	max-width: 300px;
 	height: auto;
 }
