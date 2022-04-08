@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import data.Candidates;
+import data.Questions;
 
-// Delete nappia painettu
+//Delete nappia painettu
 @WebServlet(
-    name = "DeleteCandidates",
-    urlPatterns = {"/deletecandidates"}
+		name = "DeleteQuestions",
+		urlPatterns = {"/deletequestions"}
 )
 //Tähän database
-public class DeleteCandidates extends HttpServlet {
+public class DeleteQuestions extends HttpServlet {
 	private Dao dao;
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "vaaliqueen", "kukkuu");
@@ -29,12 +29,13 @@ public class DeleteCandidates extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		String id=request.getParameter("id"); // ID vastaanotto showcandidatelta
-		ArrayList<Candidates> list=null; // näytä lista deletoinnin jälkeen, ehdokaslistan vastaanoton valmistelu
+		ArrayList<Questions> list=null; // näytä lista deletoinnin jälkeen, ehdokaslistan vastaanoton valmistelu
 		if (dao.getConnection()) { // yhteydenotto
-			list=dao.deleteCandidates(id); // dao poista ehdokas
+			list=dao.deleteQuestions(id); // dao poista ehdokas
 		}
-		request.setAttribute("candidateslist", list); // pyyntö päivitetystä listasta
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidates.jsp"); // lähetetään päivitetty lista eteenpäin
+		request.setAttribute("questionslist", list); // pyyntö päivitetystä listasta
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestions.jsp"); // lähetetään päivitetty lista eteenpäin
 		rd.forward(request, response);
 	}
+
 }
