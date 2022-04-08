@@ -21,6 +21,10 @@
 </header>
 <h2>Täällä näet kysymykset</h2>
 
+<br>
+<br>
+<a href='/mainpage'>Takaisin pääsivulle</a>
+
 	<ol>
 		<c:forEach var="kysymykset" items="${requestScope.questionslist}" >
 		<h3><li>${kysymykset.id}:
@@ -29,14 +33,6 @@
 			<a href='/readtoupdatequestions?id=${kysymykset.id}'>update</a></h4>
 		</c:forEach>
 	</ol>
-
-<h3>Lisää uusi KYSYMYS</h3>
-<form action='/addquestions' method='post'>
-Kysymyksen ID: <input type='text' name='kysymys_id' value='${requestScope.kysymykset.id}'><br> 
-Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysymys}'><br>
-<input type='submit' name='ok' value='Send help'> 
-</form>
-
  
 <footer>
 © Ansa Holttinen, Johanna Sieranoja & Anna Westerback
