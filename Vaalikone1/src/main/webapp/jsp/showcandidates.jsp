@@ -19,7 +19,11 @@
 <header>
 <img alt="" src="jsp/vote.png" alt="vote" class="center">
 </header>
-<h2>Tervetuloa vaalikoneeseen</h2>
+<h1>Kaikki ehdokkaat listattuna</h1>
+
+<h2>
+<a href='/addcandidates?id=${ehdokkaat.id}'>Lisää uusi ehdokas</a> </h2>
+<br>
 
 	<ol>
 		<c:forEach var="ehdokkaat" items="${requestScope.candidateslist}" >
@@ -44,18 +48,18 @@
 
 <%--  <%@ include file="../html/somehtml.html" %> --%>
 
-<h3>Lisää uusi henkilö</h3>
-<form action='/addcandidates' method='post'>
-Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}'><br> 
-Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
-Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>
-Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokkaat.puolue}'><br>
-Ehdokkaan kotikunta: <input type='text' name='kotipaikkakunta' value='${requestScope.ehdokkaat.kunta}'><br>
-Ehdokkaan ammatti: <input type='text' name='ammatti' value='${requestScope.ehdokkaat.ammatti}'><br>
-Ehdokkaan syy haluta eduskuntaan: <input type='text' name='miksi_eduskuntaan' value='${requestScope.ehdokkaat.miksi}'><br>
-Mitä asioita haluat edistää: <input type='text' name='mita_asioita_haluat_edistaa' value='${requestScope.ehdokkaat.mita}'><br>
-<input type='submit' name='ok' value='Send help'> 
-</form>
+<!-- <h3>Lisää uusi henkilö</h3> -->
+<!-- <form action='/addcandidates' method='post'> -->
+<%-- Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}'><br>  --%>
+<%-- Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br> --%>
+<%-- Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br> --%>
+<%-- Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokkaat.puolue}'><br> --%>
+<%-- Ehdokkaan kotikunta: <input type='text' name='kotipaikkakunta' value='${requestScope.ehdokkaat.kunta}'><br> --%>
+<%-- Ehdokkaan ammatti: <input type='text' name='ammatti' value='${requestScope.ehdokkaat.ammatti}'><br> --%>
+<%-- Ehdokkaan syy haluta eduskuntaan: <input type='text' name='miksi_eduskuntaan' value='${requestScope.ehdokkaat.miksi}'><br> --%>
+<%-- Mitä asioita haluat edistää: <input type='text' name='mita_asioita_haluat_edistaa' value='${requestScope.ehdokkaat.mita}'><br> --%>
+<!-- <input type='submit' name='ok' value='Send help'>  -->
+<!-- </form> -->
 
  
 <footer>
