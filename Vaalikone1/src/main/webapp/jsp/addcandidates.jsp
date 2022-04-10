@@ -10,11 +10,14 @@
 </head>
 <body>
 
-<h1>Lisää uusi henkilö</h1>
-<br>
+
+<h1>Lisää uusi henkilö</h1><br>
 <h2>
-<a href='/showcandidates'>Takaisin</a>
-</h2>
+<a href='/showcandidates'>Takaisin ehdokkaisiin</a> <br>
+<a href='/mainpage'>Takaisin pääsivulle</a></h2>
+
+
+
 
 <form action='/addcandidates' method='post'>
 Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}'><br> 

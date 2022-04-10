@@ -22,10 +22,13 @@
 <h1>Kaikki ehdokkaat listattuna</h1>
 <br>
 
+
+
 <h2>
 <a href='/addcandidates?id=${ehdokkaat.id}'>Lisää uusi ehdokas</a> <br>
 <a href='/mainpage'>Takaisin etusivulle</a>
 </h2>
+
 <br>
 
 	<ol>
