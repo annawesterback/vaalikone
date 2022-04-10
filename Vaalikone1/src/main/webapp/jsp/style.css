@@ -7,6 +7,21 @@ body{
   	margin-left: auto;
 	margin-right: auto;
 	display: block;
+	padding-top: 6px;
+	padding-left: 9px;
+}
+
+h1 {
+	color: #76323F;
+	display: block;
+	padding-top: 6px;
+	padding-left: 9px;
+	position:relative;
+	left: 50;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 h2 {
@@ -36,19 +51,19 @@ footer {
 	height: auto;
 }
 
-
-
 form {
     margin-left: 35%;
     margin-right:35%;
     width: 20%;
     margin-top: 100px;
-    
     height: 110px;
-    
     resize: none;
     font-size: 20;
-  
+}
+
+a:-webkit-any-link {
+	padding-top: 6px;
+	padding-left: 9px;
 }
 
 

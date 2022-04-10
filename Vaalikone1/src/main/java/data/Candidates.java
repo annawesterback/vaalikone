@@ -4,7 +4,7 @@ public class Candidates {
 	private int id;
 	private String sukunimi;
 	private String etunimi;
-//	private int ika;
+	private int ika;
 	private String kunta;
 	private String puolue;
 	private String ammatti;
@@ -14,13 +14,13 @@ public class Candidates {
 	
 
 	
-	public Candidates(String id, String sukunimi, String etunimi, String kunta, String puolue, 
+	public Candidates(String id, String sukunimi, String etunimi, String ika, String kunta, String puolue, 
 			String ammatti, String miksi, String mita) {
 		// TODO Auto-generated constructor stub
 		setId(id);
 		this.sukunimi=sukunimi;
 		this.etunimi=etunimi;
-//		this.ika=ika;
+		setIka(ika);
 		this.kunta=kunta;
 		this.puolue=puolue;
 		this.ammatti=ammatti;
@@ -61,6 +61,23 @@ public class Candidates {
 	}
 	public void setEtunimi(String etunimi) {
 	this.etunimi = etunimi;
+	}
+	
+	// IKÄ
+	
+	public int getIka() {
+		return ika;
+	}
+	public void setIka(int ika) {
+		this.ika = ika;
+	}
+	public void setIka(String ika) {
+		try {
+			this.ika = Integer.parseInt(ika);
+		}
+		catch(NumberFormatException | NullPointerException e) {
+			//Do nothing - the value of id won't be changed
+		}
 	}
 
 	// KUNTA
@@ -103,6 +120,6 @@ public class Candidates {
 	this.mita = mita;
 	}
 	public String toString() {
-		return String.format("id:%s, sukunimi:%s, etunimi:%s, kunta:%s, puolue:%s, ammatti:%s, miksi:%s, mita:%s", id, sukunimi, etunimi, kunta, puolue, ammatti, miksi, mita);
+		return String.format("id:%s, sukunimi:%s, etunimi:%s, ika:%s, kunta:%s, puolue:%s, ammatti:%s, miksi:%s, mita:%s", id, sukunimi, etunimi, ika, kunta, puolue, ammatti, miksi, mita);
 	}
 }

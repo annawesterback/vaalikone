@@ -20,9 +20,17 @@
 <img alt="" src="jsp/vote.png" alt="vote" class="center">
 </header>
 <h1>Kaikki ehdokkaat listattuna</h1>
+<br>
 
+<<<<<<< HEAD
 <a href='/mainpage'>Takaisin pääsivulle</a> <br> <br>
 <h3> <a href='/addcandidates?id=${ehdokkaat.id}'>Lisää uusi ehdokas</a> </h3>
+=======
+<h2>
+<a href='/addcandidates?id=${ehdokkaat.id}'>Lisää uusi ehdokas</a> <br>
+<a href='/mainpage'>Takaisin etusivulle</a>
+</h2>
+>>>>>>> branch 'main' of https://github.com/annawesterback/vaalikone.git
 <br>
 
 	<ol>
@@ -30,6 +38,7 @@
 		<h3><li>${ehdokkaat.id}: 
 			${ehdokkaat.sukunimi}, 
 			${ehdokkaat.etunimi}, 
+			${ehdokkaat.ika}, 
 			${ehdokkaat.ammatti},			
 			${ehdokkaat.kunta},
 			${ehdokkaat.puolue} </h3>
