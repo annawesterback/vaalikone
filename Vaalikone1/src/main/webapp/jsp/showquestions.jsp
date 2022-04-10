@@ -23,12 +23,11 @@
 
 <br>
 <br>
-<<<<<<< HEAD
 
-<h3> <a href='/addquestions'>Lisää uusi kysymys</a> </h3>
-=======
-<h2>
->>>>>>> branch 'main' of https://github.com/annawesterback/vaalikone.git
+
+<h2> <a href='/addquestions'>Lisää uusi kysymys</a> <br>
+
+
 <a href='/mainpage'>Takaisin pääsivulle</a>
 </h2>
 <br>

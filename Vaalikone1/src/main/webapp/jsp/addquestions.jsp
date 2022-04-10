@@ -9,22 +9,18 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 
 
-<h3>Lis‰‰ uusi KYSYMYS</h3>
-<br>
 
-
-<a href='/ShowQuestions'>Takaisin kysymyksiin</a> <br><br>
-<a href='/mainpage'>Takaisin p‰‰sivulle</a>
-=======
 <h1>Lis‰‰ uusi kysymys</h1>
 <br>
+
 <h2>
+<a href='/ShowQuestions'>Takaisin kysymyksiin</a> <br>
 <a href='/mainpage'>Takaisin p‰‰sivulle</a>
 </h2>
->>>>>>> branch 'main' of https://github.com/annawesterback/vaalikone.git
+
+
 <form action='/addquestions' method='post'>
 Kysymyksen ID: <input type='text' name='kysymys_id' value='${requestScope.kysymykset.id}'><br> 
 Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysymys}'><br>
@@ -33,11 +29,10 @@ Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysy
 
 <br>
 <br>
-<<<<<<< HEAD
 
 
-=======
->>>>>>> branch 'main' of https://github.com/annawesterback/vaalikone.git
+
+
 
 </body>
 </html>

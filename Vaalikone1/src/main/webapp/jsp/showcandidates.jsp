@@ -22,15 +22,13 @@
 <h1>Kaikki ehdokkaat listattuna</h1>
 <br>
 
-<<<<<<< HEAD
-<a href='/mainpage'>Takaisin pääsivulle</a> <br> <br>
-<h3> <a href='/addcandidates?id=${ehdokkaat.id}'>Lisää uusi ehdokas</a> </h3>
-=======
+
+
 <h2>
 <a href='/addcandidates?id=${ehdokkaat.id}'>Lisää uusi ehdokas</a> <br>
 <a href='/mainpage'>Takaisin etusivulle</a>
 </h2>
->>>>>>> branch 'main' of https://github.com/annawesterback/vaalikone.git
+
 <br>
 
 	<ol>
