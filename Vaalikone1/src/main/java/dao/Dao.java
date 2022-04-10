@@ -59,7 +59,7 @@ public class Dao {
 				f.setId(RS.getInt("ehdokas_id"));
 				f.setSukunimi(RS.getString("sukunimi"));
 				f.setEtunimi(RS.getString("etunimi"));
-				f.setIka(RS.getString("ika"));
+				f.setIka(RS.getInt("ika"));
 				f.setKunta(RS.getString("kotipaikkakunta"));
 				f.setPuolue(RS.getString("puolue"));
 				f.setAmmatti(RS.getString("ammatti"));
