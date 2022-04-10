@@ -36,13 +36,14 @@ public class AddCandidates extends HttpServlet {
 		String id=request.getParameter("ehdokas_id");
 		String sukunimi=request.getParameter("sukunimi");
 		String etunimi=request.getParameter("etunimi");
+		String ika=request.getParameter("ika");
 		String kunta=request.getParameter("kotipaikkakunta");
 		String puolue=request.getParameter("puolue");
 		String ammatti=request.getParameter("ammatti");
 		String miksi=request.getParameter("miksi_eduskuntaan");
 		String mita=request.getParameter("mita_asioita_haluat_edistaa");
 
-		Candidates f=new Candidates(id, sukunimi, etunimi, kunta, puolue, ammatti, miksi, mita);
+		Candidates f=new Candidates(id, sukunimi, etunimi, ika, kunta, puolue, ammatti, miksi, mita);
 		System.out.println("insert: "+ f.toString());
 		
 		ArrayList<Candidates> list=null;

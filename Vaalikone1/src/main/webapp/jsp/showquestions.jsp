@@ -19,12 +19,14 @@
 <header>
 <img alt="" src="jsp/vote.png" alt="vote" class="center">
 </header>
-<h2>Täällä näet kysymykset</h2>
+<h1>Täällä näet kysymykset</h1>
 
 <br>
 <br>
+<h2>
 <a href='/mainpage'>Takaisin pääsivulle</a>
-
+</h2>
+<br>
 	<ol>
 		<c:forEach var="kysymykset" items="${requestScope.questionslist}" >
 		<h3><li>${kysymykset.id}:

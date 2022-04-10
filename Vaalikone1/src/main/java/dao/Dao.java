@@ -59,6 +59,7 @@ public class Dao {
 				f.setId(RS.getInt("ehdokas_id"));
 				f.setSukunimi(RS.getString("sukunimi"));
 				f.setEtunimi(RS.getString("etunimi"));
+				f.setIka(RS.getString("ika"));
 				f.setKunta(RS.getString("kotipaikkakunta"));
 				f.setPuolue(RS.getString("puolue"));
 				f.setAmmatti(RS.getString("ammatti"));
@@ -78,19 +79,20 @@ public class Dao {
 	
 	public ArrayList<Candidates> updateCandidates(Candidates f) {
 		String sql="update ehdokkaat set "
-				+ " sukunimi=?, etunimi=?, kotipaikkakunta=?, puolue=?, ammatti=? "
+				+ " sukunimi=?, etunimi=?, ika=?, kotipaikkakunta=?, puolue=?, ammatti=? "
 				+ ", miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=? where ehdokas_id=?";
 		try {
 			
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, f.getSukunimi());
 			pstmt.setString(2, f.getEtunimi());
-			pstmt.setString(3, f.getKunta());
-			pstmt.setString(4, f.getPuolue());
-			pstmt.setString(5, f.getAmmatti());
-			pstmt.setString(6, f.getMiksi());
-			pstmt.setString(7, f.getMita());
-			pstmt.setInt(8, f.getId());
+			pstmt.setInt(3, f.getIka());
+			pstmt.setString(4, f.getKunta());
+			pstmt.setString(5, f.getPuolue());
+			pstmt.setString(6, f.getAmmatti());
+			pstmt.setString(7, f.getMiksi());
+			pstmt.setString(8, f.getMita());
+			pstmt.setInt(9, f.getId());
 			pstmt.executeUpdate();
 			return readAllCandidates();
 		}
@@ -104,19 +106,20 @@ public class Dao {
 	
 		public ArrayList<Candidates> addCandidates(Candidates f) {
 			String sql="insert into ehdokkaat"
-					+ "(ehdokas_id ,sukunimi, etunimi, kotipaikkakunta, puolue, ammatti,"
-					+ "miksi_eduskuntaan, mita_asioita_haluat_edistaa) VALUES (?,?,?,?,?,?,?,?)";
+					+ "(ehdokas_id ,sukunimi, etunimi, ika, kotipaikkakunta, puolue, ammatti,"
+					+ "miksi_eduskuntaan, mita_asioita_haluat_edistaa) VALUES (?,?,?,?,?,?,?,?,?)";
 			try {
 				
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				pstmt.setInt(1, f.getId());
 				pstmt.setString(2, f.getSukunimi());
 				pstmt.setString(3, f.getEtunimi());
-				pstmt.setString(4, f.getKunta());
-				pstmt.setString(5, f.getPuolue());
-				pstmt.setString(6, f.getAmmatti());
-				pstmt.setString(7, f.getMiksi());
-				pstmt.setString(8, f.getMita());
+				pstmt.setInt(4, f.getIka());
+				pstmt.setString(5, f.getKunta());
+				pstmt.setString(6, f.getPuolue());
+				pstmt.setString(7, f.getAmmatti());
+				pstmt.setString(8, f.getMiksi());
+				pstmt.setString(9, f.getMita());
 				pstmt.executeUpdate();
 				return readAllCandidates();
 			}
@@ -157,6 +160,7 @@ public class Dao {
 				f.setId(RS.getInt("id"));
 				f.setSukunimi(RS.getString("sukunimi"));
 				f.setEtunimi(RS.getString("etunimi"));
+				f.setIka(RS.getInt("ika"));
 				f.setKunta(RS.getString("kotipaikkakunta"));
 				f.setPuolue(RS.getString("puolue"));
 				f.setAmmatti(RS.getString("ammatti"));

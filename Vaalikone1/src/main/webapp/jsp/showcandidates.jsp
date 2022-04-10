@@ -20,9 +20,12 @@
 <img alt="" src="jsp/vote.png" alt="vote" class="center">
 </header>
 <h1>Kaikki ehdokkaat listattuna</h1>
+<br>
 
 <h2>
-<a href='/addcandidates?id=${ehdokkaat.id}'>Lisää uusi ehdokas</a> </h2>
+<a href='/addcandidates?id=${ehdokkaat.id}'>Lisää uusi ehdokas</a> <br>
+<a href='/mainpage'>Takaisin etusivulle</a>
+</h2>
 <br>
 
 	<ol>
@@ -30,6 +33,7 @@
 		<h3><li>${ehdokkaat.id}: 
 			${ehdokkaat.sukunimi}, 
 			${ehdokkaat.etunimi}, 
+			${ehdokkaat.ika}, 
 			${ehdokkaat.ammatti},			
 			${ehdokkaat.kunta},
 			${ehdokkaat.puolue} </h3>
