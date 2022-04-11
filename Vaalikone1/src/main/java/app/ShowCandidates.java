@@ -33,6 +33,7 @@ public class ShowCandidates extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	// LUOKKA
     public ShowCandidates() {
         super();
         // TODO Auto-generated constructor stub
@@ -42,7 +43,7 @@ public class ShowCandidates extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     
-    // DO-GET index.html linkkiä "showcandidates" painettu
+    // DO-GET index.html linkkiä "showcandidates" painettu, GET hakee tiedon, ei POST
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Candidates> list=null; // tee arraylist, ei tiedä millainen olio palautetaan
 		if (dao.getConnection()) { // dao ota yhteys tietokantaan
