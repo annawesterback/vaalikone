@@ -47,26 +47,6 @@
 		</c:forEach>
 	</ol>
 
-<%
-// SCRIPLETTI - jos ei käytetä taglibrarya, niin käytä javakoodia
-// tämä voiso olla DO-GET metodin sisällä HelloAppEngine
-
-%>
-
-<%--  <%@ include file="../html/somehtml.html" %> --%>
-
-<!-- <h3>Lisää uusi henkilö</h3> -->
-<!-- <form action='/addcandidates' method='post'> -->
-<%-- Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}'><br>  --%>
-<%-- Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br> --%>
-<%-- Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br> --%>
-<%-- Ehdokkaan puolue: <input type='text' name='puolue' value='${requestScope.ehdokkaat.puolue}'><br> --%>
-<%-- Ehdokkaan kotikunta: <input type='text' name='kotipaikkakunta' value='${requestScope.ehdokkaat.kunta}'><br> --%>
-<%-- Ehdokkaan ammatti: <input type='text' name='ammatti' value='${requestScope.ehdokkaat.ammatti}'><br> --%>
-<%-- Ehdokkaan syy haluta eduskuntaan: <input type='text' name='miksi_eduskuntaan' value='${requestScope.ehdokkaat.miksi}'><br> --%>
-<%-- Mitä asioita haluat edistää: <input type='text' name='mita_asioita_haluat_edistaa' value='${requestScope.ehdokkaat.mita}'><br> --%>
-<!-- <input type='submit' name='ok' value='Send help'>  -->
-<!-- </form> -->
 
  
 <footer>

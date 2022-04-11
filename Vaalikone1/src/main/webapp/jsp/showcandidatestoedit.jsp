@@ -18,7 +18,8 @@
 </h2>
 
 <form action='/editcandidates' method='post'>
-Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}'><br> 
+Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokkaat.id}' readonly><br> 
+<%-- Ehdokkaan id: <input type='text' name='ehdokas_id' value='${requestScope.ehdokas_id}' readonly><br>  --%>
 Ehdokkaan sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokkaat.sukunimi}'><br>
 Ehdokkaan etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokkaat.etunimi}'><br>
 Ehdokkaan ikä: <input type='text' name='ika' value='${requestScope.ehdokkaat.ika}'><br>

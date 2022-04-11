@@ -41,7 +41,7 @@ public class ReadToUpdateCandidates extends HttpServlet {
 		if (dao.getConnection()) {
 			f=dao.readCandidates(id);
 		}
-		request.setAttribute("candidateslist", f);
+		request.setAttribute("ehdokkaat", f);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidatestoedit.jsp");
 		rd.forward(request, response);

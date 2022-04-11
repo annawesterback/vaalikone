@@ -40,7 +40,7 @@ public class ReadToUpdateQuestions extends HttpServlet {
 		if (dao.getConnection()) {
 			f=dao.readQuestions(id);
 		}
-		request.setAttribute("questionslist", f);
+		request.setAttribute("kysymykset", f);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestionstoedit.jsp");
 		rd.forward(request, response);

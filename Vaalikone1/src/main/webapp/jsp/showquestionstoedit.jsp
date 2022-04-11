@@ -12,12 +12,13 @@
 <title>Vaalikone</title>
 </head>
 <body>
-<h2>Muokkaa vaalikonetta</h2>
-
+<h1>Muokkaa vaalikonetta</h1>
+<h2>
 <a href='/ShowQuestions'>takaisin</a>
+</h2>
 
 <form action='/editquestions' method='post'>
-Kysymys ID: <input type='text' name='kysymys_id' value='${requestScope.kysymykset.id}'><br> 
+Kysymys ID: <input type='text' name='kysymys_id' value='${requestScope.kysymykset.id}' readonly><br> 
 Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysymys}'><br>
 <input type='submit' name='ok' value='Send'> 
 </form>

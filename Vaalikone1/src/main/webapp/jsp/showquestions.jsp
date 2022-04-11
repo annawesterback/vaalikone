@@ -35,7 +35,7 @@
 		<c:forEach var="kysymykset" items="${requestScope.questionslist}" >
 		<h3><li>${kysymykset.id}:
 			${kysymykset.kysymys} </h3>
-			<a href='/deletequestions?id=${kysymykset.id}'>delete</a> 
+		<h4><a href='/deletequestions?id=${kysymykset.id}'>delete</a> 
 			<a href='/readtoupdatequestions?id=${kysymykset.id}'>update</a></h4>
 		</c:forEach>
 	</ol>

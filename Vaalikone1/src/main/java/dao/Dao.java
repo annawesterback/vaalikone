@@ -157,7 +157,7 @@ public class Dao {
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
 				f=new Candidates();
-				f.setId(RS.getInt("id"));
+				f.setId(RS.getInt("ehdokas_id"));
 				f.setSukunimi(RS.getString("sukunimi"));
 				f.setEtunimi(RS.getString("etunimi"));
 				f.setIka(RS.getInt("ika"));
@@ -168,6 +168,7 @@ public class Dao {
 				f.setMita(RS.getString("mita_asioita_haluat_edistaa"));
 
 			}
+			System.out.println(String.format("found ehdokas %s with id %s", f==null ? "Not found" : f.getSukunimi(), id ));
 			return f;
 		}
 		catch(SQLException e) {
@@ -256,12 +257,12 @@ public class Dao {
 		
 	}
 		// Poistetaan KYSYMYKSIÄ
-		public ArrayList<Questions> deleteQuestions(String kysymys_ID) {
-			String sql="delete from kysymykset where kysymys_ID=?";
+		public ArrayList<Questions> deleteQuestions(String kysymys_id) {
+			String sql="delete from kysymykset where kysymys_id=?";
 			
 			try {
 				PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
-				pstmt.setString(1, kysymys_ID); // aseta tietokantakyselyn indeksi
+				pstmt.setString(1, kysymys_id); // aseta tietokantakyselyn indeksi
 				pstmt.executeUpdate(); // päivitä taulu
 				return readAllQuestions(); // näytä päivitetty taulu, viesti päivityksen onnistumisestä riittää
 			}
