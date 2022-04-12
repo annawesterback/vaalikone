@@ -210,12 +210,7 @@ public class Dao {
 		}
 		catch(SQLException e) {
 			System.out.println(String.format("Virhe tietojen hakemisessa: %s, %s", sql,e.toString()));
-			try {
-				conn.close();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+		
 			return null;
 		}
 	}
