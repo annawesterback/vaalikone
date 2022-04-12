@@ -35,7 +35,8 @@ public class DeleteQuestions extends HttpServlet {
 		}
 		request.setAttribute("questionslist", list); // pyyntö päivitetystä listasta
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestions.jsp"); // lähetetään päivitetty lista eteenpäin
-		rd.forward(request, response);
+//		rd.forward(request, response);
+		response.sendRedirect("/ShowQuestions");
 	}
 
 }

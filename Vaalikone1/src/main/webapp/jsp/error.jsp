@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <style><%@include file="/jsp/style.css"%></style>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Vaalikone</title>
 </head>
 <body>
-Kirjautuminen epäonnistui
+Kirjautuminen epÃ¤onnistui
 <br>
 <a href='/login'>Takaisin</a>
 </body>

@@ -51,9 +51,10 @@ public class Dao {
 	
 	public ArrayList<Candidates> readAllCandidates() {
 		ArrayList<Candidates> list=new ArrayList<>();
+		String sql = "select * from ehdokkaat";
 		try {
 			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from ehdokkaat");
+			ResultSet RS=stmt.executeQuery(sql);
 			while (RS.next()){
 				Candidates f=new Candidates();
 				f.setId(RS.getInt("ehdokas_id"));
@@ -68,9 +69,19 @@ public class Dao {
 			
 				list.add(f);
 			}
+			RS.close();
+			stmt.close();
+			conn.close();
 			return list;
 		}
 		catch(SQLException e) {
+			System.out.println(String.format("Virhe kyselyss‰: %s, %s", sql,e.toString()));
+			try {
+				conn.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			return null;
 		}
 		
@@ -94,10 +105,19 @@ public class Dao {
 			pstmt.setString(8, f.getMita());
 			pstmt.setInt(9, f.getId());
 			pstmt.executeUpdate();
+		
+			pstmt.close();
+			conn.close();
 			return readAllCandidates();
 		}
 		catch(SQLException e) {
-			System.out.println(String.format("Virhe ehdokkaan muokkaamisessa:%s,%s", sql,e.toString()));
+			System.out.println(String.format("Virhe ehdokkaan muokkaamisessa: %s, %s", sql,e.toString()));
+			try {
+				conn.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			return null;
 		}
 		
@@ -121,10 +141,19 @@ public class Dao {
 				pstmt.setString(8, f.getMiksi());
 				pstmt.setString(9, f.getMita());
 				pstmt.executeUpdate();
+				
+				pstmt.close();
+				conn.close();
 				return readAllCandidates();
 			}
 			catch(SQLException e) {
-				System.out.println(String.format("Virhe ehdokkaan lis‰‰misess‰:%s,%s", sql,e.toString()));
+				System.out.println(String.format("Virhe ehdokkaan lis‰‰misess‰: %s, %s", sql,e.toString()));
+				try {
+					conn.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				return null;
 			}
 		
@@ -138,10 +167,17 @@ public class Dao {
 				PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
 				pstmt.setString(1, id); // aseta tietokantakyselyn indeksi
 				pstmt.executeUpdate(); // p‰ivit‰ taulu
+				
 				return readAllCandidates(); // n‰yt‰ p‰ivitetty taulu, viesti p‰ivityksen onnistumisest‰ riitt‰‰
 			}
 			catch(SQLException e) {
-				System.out.println(String.format("Virhe ehdokkaan poistamisessa:%s,%s", sql,e.toString()));
+				System.out.println(String.format("Virhe ehdokkaan poistamisessa: %s, %s", sql,e.toString()));
+				try {
+					conn.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			return null;
 			}
 	}
@@ -168,11 +204,18 @@ public class Dao {
 				f.setMita(RS.getString("mita_asioita_haluat_edistaa"));
 
 			}
-			System.out.println(String.format("found ehdokas %s with id %s", f==null ? "Not found" : f.getSukunimi(), id ));
+			pstmt.close();
+			conn.close();
 			return f;
 		}
 		catch(SQLException e) {
-			System.out.println(String.format("Virhe tietojen hakemisessa:%s,%s", sql,e.toString()));
+			System.out.println(String.format("Virhe tietojen hakemisessa: %s, %s", sql,e.toString()));
+			try {
+				conn.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			return null;
 		}
 	}
@@ -182,9 +225,10 @@ public class Dao {
 	//Luetaan kaikki KYSYMYKSET taulusta
 		public ArrayList<Questions> readAllQuestions() {
 			ArrayList<Questions> list=new ArrayList<>();
+			String sql = "select * from kysymykset";
 			try {
 				Statement stmt=conn.createStatement();
-				ResultSet RS=stmt.executeQuery("select * from kysymykset");
+				ResultSet RS=stmt.executeQuery(sql);
 				while (RS.next()){
 					Questions f=new Questions();
 					f.setId(RS.getInt("kysymys_id"));
@@ -192,9 +236,12 @@ public class Dao {
 					
 					list.add(f);
 				}
+
 				return list;
 			}
 			catch(SQLException e) {
+				System.out.println(String.format("Virhe tietojen hakemisessa: %s, %s", sql,e.toString()));
+			
 				return null;
 			}
 			
@@ -212,11 +259,13 @@ public class Dao {
 					f=new Questions();
 					f.setId(RS.getInt("kysymys_id"));
 					f.setKysymys(RS.getString("kysymys"));
+					
 				}
 				return f;
 			}
 			catch(SQLException e) {
-				System.out.println(String.format("Virhe kysymystietojen hakemisessa:%s,%s", sql,e.toString()));
+				System.out.println(String.format("Virhe kysymystietojen hakemisessa: %s, %s", sql,e.toString()));
+				
 				return null;
 			}
 		}
@@ -231,10 +280,12 @@ public class Dao {
 			pstmt.setString(1, f.getKysymys());
 			pstmt.setInt(2, f.getId());
 			pstmt.executeUpdate();
+			
 			return readAllQuestions();
 		}
 		catch(SQLException e) {
-			System.out.println(String.format("Virhe kysymyksen muokkaamisessa:%s,%s", sql,e.toString()));
+			System.out.println(String.format("Virhe kysymyksen muokkaamisessa: %s, %s", sql,e.toString()));
+		
 			return null;
 		}
 		
@@ -248,10 +299,12 @@ public class Dao {
 				pstmt.setInt(1, f.getId());
 				pstmt.setString(2, f.getKysymys());
 				pstmt.executeUpdate();
+				
 				return readAllQuestions();
 			}
 			catch(SQLException e) {
-				System.out.println(String.format("Virhe kysymyksen lis‰‰misess‰:%s,%s", sql,e.toString()));
+				System.out.println(String.format("Virhe kysymyksen lis‰‰misess‰: %s, %s", sql,e.toString()));
+				
 				return null;
 			}
 		
@@ -264,10 +317,12 @@ public class Dao {
 				PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
 				pstmt.setString(1, kysymys_id); // aseta tietokantakyselyn indeksi
 				pstmt.executeUpdate(); // p‰ivit‰ taulu
+			
 				return readAllQuestions(); // n‰yt‰ p‰ivitetty taulu, viesti p‰ivityksen onnistumisest‰ riitt‰‰
 			}
 			catch(SQLException e) {
-				System.out.println(String.format("Virhe kysymyksen poistamisessa:%s,%s", sql,e.toString()));
+				System.out.println(String.format("Virhe kysymyksen poistamisessa: %s, %s", sql,e.toString()));
+			
 			return null;
 			}
 	}
