@@ -14,13 +14,37 @@ import data.Questions;
 
 import java.sql.Connection;
 
+/**
+ * Date: 23.4.2022
+ * This is Election Machine program. Admin can add, edit and remove candidates and questions.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 public class Dao { 
+	/**
+	 * string value for database url
+	 */
 	private String url;
+	/**
+	 * string value for database username
+	 */
 	private String user;
+	/**
+	 * string value for database password
+	 */
 	private String pass;
+	/**
+	 * connection value for database
+	 */
 	private Connection conn;
 	
 	// Luo yhteys tietokantaan rakentajassa
+	/**
+	 * This is method to creating of connection to database including log in information
+	 * @param url first string value
+	 * @param user second string value
+	 * @param pass third string value
+	 */
 	public Dao(String url, String user, String pass) {
 		this.url=url;
 		this.user=user;
@@ -28,6 +52,10 @@ public class Dao {
 	}
 	
 	//Pyydetään ottamaan yhteys
+	/**
+	 * This method get connection to database
+	 * @return returning status of creating connection to database
+	 */
 	public boolean getConnection() {
 		try {
 	        if (conn == null || conn.isClosed()) {
@@ -49,6 +77,10 @@ public class Dao {
 	}
 		//Luetaan kaikki ehdokkaat taulusta
 	
+	/**
+	 * This method to read all candidates from database
+	 * @return returns list of all candidates
+	 */
 	public ArrayList<Candidates> readAllCandidates() {
 		ArrayList<Candidates> list=new ArrayList<>();
 		String sql = "select * from ehdokkaat";
@@ -88,6 +120,11 @@ public class Dao {
 	}
 		//Päivitetään tietoja
 	
+	/**
+	 * This method to update candidates
+	 * @param f string value for list of candidates
+	 * @return returns list of updated candidates
+	 */
 	public ArrayList<Candidates> updateCandidates(Candidates f) {
 		String sql="update ehdokkaat set "
 				+ " sukunimi=?, etunimi=?, ika=?, kotipaikkakunta=?, puolue=?, ammatti=? "
@@ -124,6 +161,11 @@ public class Dao {
 	}
 		//Lisätään tietoja
 	
+		/**
+		 * This method  to add candidates and show list of all candidates
+		 * @param f string value for adding new candidates
+		 * @return returns list of updated candidates
+		 */
 		public ArrayList<Candidates> addCandidates(Candidates f) {
 			String sql="insert into ehdokkaat"
 					+ "(ehdokas_id ,sukunimi, etunimi, ika, kotipaikkakunta, puolue, ammatti,"
@@ -160,6 +202,11 @@ public class Dao {
 	}
 			// Poistetaan tietoja
 		
+		/**
+		 * This is method to delete candidates
+		 * @param id value for deleting candidates
+		 * @return returns list of updated candidates
+		 */
 		public ArrayList<Candidates> deleteCandidates(String id) {
 			String sql="delete from ehdokkaat where ehdokas_id=?";
 			
@@ -184,6 +231,11 @@ public class Dao {
 	
 	// Luetaan tietoja
 
+	/**
+	 * This is method to read selected candidates 
+	 * @param id value for selected candidate
+	 * @return returns selected candidate
+	 */
 	public Candidates readCandidates(String id) {
 		Candidates f=null;
 		String sql="select * from ehdokkaat where ehdokas_id=?";
@@ -218,6 +270,10 @@ public class Dao {
 // KYSYMYSTEN METODIT
 	
 	//Luetaan kaikki KYSYMYKSET taulusta
+		/**
+		 * This method to read all questions from database
+		 * @return returns list of all questions
+		 */
 		public ArrayList<Questions> readAllQuestions() {
 			ArrayList<Questions> list=new ArrayList<>();
 			String sql = "select * from kysymykset";
@@ -243,6 +299,11 @@ public class Dao {
 		}
 		
 	// Luetaan 	KYSYMYKSIÄ
+		/**
+		 * This is method to read questions from database
+		 * @param id value for reading questions
+		 * @return returns questions
+		 */
 		public Questions readQuestions(String id) {
 			Questions f=null;
 			String sql="select * from kysymykset where kysymys_id=?";
@@ -266,6 +327,11 @@ public class Dao {
 		}
 		
 	//Päivitetään KYSYMYKSIÄ
+	/**
+	 * This is method to update questions
+	 * @param f value for selected question
+	 * @return returns list of updated questions
+	 */
 	public ArrayList<Questions> updateQuestions(Questions f) {
 		String sql="update kysymykset set "
 				+ "kysymys=? where kysymys_id=?";
@@ -286,6 +352,11 @@ public class Dao {
 		
 	}
 	//Lisätään KYSYMYKSIÄ
+		/**
+		 * This is method for adding questions
+		 * @param f value for added question
+		 * @return returns updated list of questions
+		 */
 		public ArrayList<Questions> addQuestions(Questions f) {
 			String sql="insert into kysymykset"
 					+ "(kysymys_ID, kysymys) VALUES (?,?)";
@@ -305,6 +376,11 @@ public class Dao {
 		
 	}
 		// Poistetaan KYSYMYKSIÄ
+		/**
+		 * This is method to delete questions
+		 * @param kysymys_id value for selected question
+		 * @return returns list of updated questions
+		 */
 		public ArrayList<Questions> deleteQuestions(String kysymys_id) {
 			String sql="delete from kysymykset where kysymys_id=?";
 			

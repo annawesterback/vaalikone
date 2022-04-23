@@ -15,6 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Dao;
 import data.Candidates;
 
+/**
+ * Date: 23.4.2022
+ * This is Election Machine program where admin can add can candidates.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 @WebServlet(
     name = "AddCandidates",
     urlPatterns = {"/addcandidates"}
@@ -26,11 +32,17 @@ public class AddCandidates extends HttpServlet {
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "vaaliqueen", "kukkuu");
 	}
+	/**
+	 * This is doGet method to show candidates to website
+	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException {
 		response.sendRedirect("jsp/addcandidates.jsp"); 
 	}
+	/**
+	 * This is doPost method to add candidates to database
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		String id=request.getParameter("ehdokas_id");
