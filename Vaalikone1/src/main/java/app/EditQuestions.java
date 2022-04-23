@@ -15,6 +15,12 @@ import data.Questions;
 /**
  * Servlet implementation class EditQuestions
  */
+/**
+ * Date: 23.4.2022
+ * This is Election Machine program where admin can edit questions.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 @WebServlet(
 	    name = "EditQuestions",
 	    urlPatterns = {"/editquestions"}
@@ -29,6 +35,9 @@ public class EditQuestions extends HttpServlet {
 	     throws IOException {
 		response.sendRedirect("index.html"); 
 	}
+	/**
+	 * This is method to post edited questions
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		String id=request.getParameter("kysymys_id");

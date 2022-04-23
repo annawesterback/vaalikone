@@ -18,19 +18,41 @@ import data.Candidates;
 /**
  * Servlet implementation class ShowCandidates
  */
+
+// javadoc otsikko class ulkopuolelle - hiiren oikea > Source > Generate element comment
+/**
+ * Date: 23.4.2022
+ * This is Election Machine program that shows candidates for administrator.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ *
+ */
 @WebServlet("/showcandidates") // osoite johon view/index.html vastaa
 public class ShowCandidates extends HttpServlet {
+	
+	// javadoc class ulkopuolelle kuvaus atribuuteista klikkaa attribuutin oikealla puolella, kuvaus attribuuteista
+	/**
+	 * serialVersionUID for universal version identifier for a serializable class
+	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Dao class for methods
+	 */
 	private Dao dao=null;
 	
 	// Alusta DAO-luokka joka hoitaa tietokantaoperaatiot, voi koodata toisin ettei tarvitse p‰ivitt‰‰ kaikkiin appeihin
 	// Servletille ajetaan init-vaihe kaikissa apeissa, vasta sen j‰lkeen view/index.html
+	// javadoc metodin sis‰lle
+	/**
+	 * Log in database
+	 */
 	@Override
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "vaaliqueen", "kukkuu");
 	}
        
     /**
+     * This method shows all candidates
      * @see HttpServlet#HttpServlet()
      */
 	// LUOKKA
@@ -40,7 +62,8 @@ public class ShowCandidates extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * This method creates a list, get connection in database and show candidates
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) this get-method find candidates when link is pressed
 	 */
     
     // DO-GET index.html linkki‰ "showcandidates" painettu, GET hakee tiedon, ei POST

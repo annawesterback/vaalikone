@@ -14,6 +14,12 @@ import data.Questions;
 /**
  * Servlet implementation class ReadToUpdateQuestions
  */
+/**
+ * Date: 23.4.2022
+ * This is Election Machine program where program can read updated questions.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 @WebServlet("/readtoupdatequestions")
 public class ReadToUpdateQuestions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,6 +31,9 @@ public class ReadToUpdateQuestions extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+    /**
+     * This is method to read updated candidates
+     */
     public ReadToUpdateQuestions() {
         super();
         // TODO Auto-generated constructor stub
@@ -32,6 +41,9 @@ public class ReadToUpdateQuestions extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	/**
+	 * This is method to read updated questions from database
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

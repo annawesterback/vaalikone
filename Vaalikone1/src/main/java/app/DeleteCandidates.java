@@ -14,6 +14,12 @@ import dao.Dao;
 import data.Candidates;
 
 // Delete nappia painettu
+/**
+ * Date: 23.4.2022
+ * This is Election Machine where admin can add questions.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 @WebServlet(
     name = "DeleteCandidates",
     urlPatterns = {"/deletecandidates"}
@@ -21,10 +27,16 @@ import data.Candidates;
 //Tähän database
 public class DeleteCandidates extends HttpServlet {
 	private Dao dao;
+	/**
+	 * This is method to create connection to database
+	 */
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "vaaliqueen", "kukkuu");
 	}
 	// Delete nappia painettu viewissä.jsp eli pyydetty doget metodia
+	/**
+	 * This is method to delete candidates from database
+	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {

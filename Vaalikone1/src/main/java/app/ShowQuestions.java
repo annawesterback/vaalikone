@@ -16,6 +16,12 @@ import data.Questions;
 /**
  * Servlet implementation class ShowQuestions
  */
+/**
+ * Date: 23.4.2022
+ * This is Election Machine program where admin see all questions.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 @WebServlet("/ShowQuestions")// osoite johon websivu vastaa
 public class ShowQuestions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,6 +37,9 @@ public class ShowQuestions extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+    /**
+     * This method show questions
+     */
     public ShowQuestions () {
         super();
         // TODO Auto-generated constructor stub
@@ -41,6 +50,9 @@ public class ShowQuestions extends HttpServlet {
 	 */
     
     // DO-GET index.html linkkiä "showquestions" painettu
+	/**
+	 * This method creates a list, get connection in database and show questions
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Questions> list=null; // tee arraylist, ei tiedä millainen olio palautetaan
 		if (dao.getConnection()) { // dao ota yhteys tietokantaan

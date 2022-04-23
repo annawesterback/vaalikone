@@ -16,6 +16,12 @@ import data.Questions;
 /**
  * Servlet implementation class AddQuestions
  */
+/**
+ * Date: 23.4.2022
+ * This is Election Machine prgram where admin can add questions.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 @WebServlet(
 		name = "AddQuestions",
 		urlPatterns = {"/addquestions"})
@@ -24,12 +30,18 @@ public class AddQuestions extends HttpServlet {
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "vaaliqueen", "kukkuu");
 	}
+	/**
+	 * This is doGet method to show questions in website
+	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException {
 		response.sendRedirect("jsp/addquestions.jsp"); 
 		// response.sendRedirect("index.html"); 
 	}
+	/**
+	 * This is doPost method to add questions to database
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		String id=request.getParameter("kysymys_id");

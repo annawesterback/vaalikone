@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MainPage
  */
+/**
+ * Date: 23.4.2022
+ * This main page in Election Machine program.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 @WebServlet("/mainpage")
 public class MainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,6 +32,9 @@ public class MainPage extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	/**
+	 * Show mainpage
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

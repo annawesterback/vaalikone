@@ -12,12 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LoginCheck
  */
+/**
+ * Date: 23.4.2022
+ * This login check for admin in Election Machine program.
+ * @author owner group 20M Anna Westerback, Ansa Holttinen and Johanna Sieranoja TRTKM20A3
+ * @version 1.0
+ */
 @WebServlet("LoginCheck")
 public class LoginCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
+     */
+    /**
+     * This method checks that username and password are correct
      */
     public LoginCheck() {
         super();
@@ -34,6 +43,9 @@ public class LoginCheck extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	/**
+	 * Username and password are maintained here
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
