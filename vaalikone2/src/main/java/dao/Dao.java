@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import data.Candidates;
 import data.Questions;
+import data.UserQuestions;
 
 import java.sql.Connection;
 
@@ -51,7 +52,7 @@ public class Dao {
 		this.pass=pass;
 	}
 	
-	//Pyydetään ottamaan yhteys
+	//Pyydetï¿½ï¿½n ottamaan yhteys
 	/**
 	 * This method get connection to database
 	 * @return returning status of creating connection to database
@@ -107,7 +108,7 @@ public class Dao {
 			return list;
 		}
 		catch(SQLException e) {
-			System.out.println(String.format("Virhe kyselyssä: %s, %s", sql,e.toString()));
+			System.out.println(String.format("Virhe kyselyssï¿½: %s, %s", sql,e.toString()));
 			try {
 				conn.close();
 			} catch (SQLException e1) {
@@ -118,7 +119,7 @@ public class Dao {
 		}
 		
 	}
-		//Päivitetään tietoja
+		//Pï¿½ivitetï¿½ï¿½n tietoja
 	
 	/**
 	 * This method to update candidates
@@ -159,7 +160,7 @@ public class Dao {
 		}
 		
 	}
-		//Lisätään tietoja
+		//Lisï¿½tï¿½ï¿½n tietoja
 	
 		/**
 		 * This method  to add candidates and show list of all candidates
@@ -189,7 +190,7 @@ public class Dao {
 				return readAllCandidates();
 			}
 			catch(SQLException e) {
-				System.out.println(String.format("Virhe ehdokkaan lisäämisessä: %s, %s", sql,e.toString()));
+				System.out.println(String.format("Virhe ehdokkaan lisï¿½ï¿½misessï¿½: %s, %s", sql,e.toString()));
 				try {
 					conn.close();
 				} catch (SQLException e1) {
@@ -213,9 +214,9 @@ public class Dao {
 			try {
 				PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
 				pstmt.setString(1, id); // aseta tietokantakyselyn indeksi
-				pstmt.executeUpdate(); // päivitä taulu
+				pstmt.executeUpdate(); // pï¿½ivitï¿½ taulu
 				
-				return readAllCandidates(); // näytä päivitetty taulu, viesti päivityksen onnistumisestä riittää
+				return readAllCandidates(); // nï¿½ytï¿½ pï¿½ivitetty taulu, viesti pï¿½ivityksen onnistumisestï¿½ riittï¿½ï¿½
 			}
 			catch(SQLException e) {
 				System.out.println(String.format("Virhe ehdokkaan poistamisessa: %s, %s", sql,e.toString()));
@@ -298,7 +299,7 @@ public class Dao {
 			
 		}
 		
-	// Luetaan 	KYSYMYKSIÄ
+	// Luetaan 	KYSYMYKSIï¿½
 		/**
 		 * This is method to read questions from database
 		 * @param id value for reading questions
@@ -326,7 +327,7 @@ public class Dao {
 			}
 		}
 		
-	//Päivitetään KYSYMYKSIÄ
+	//Pï¿½ivitetï¿½ï¿½n KYSYMYKSIï¿½
 	/**
 	 * This is method to update questions
 	 * @param f value for selected question
@@ -351,7 +352,7 @@ public class Dao {
 		}
 		
 	}
-	//Lisätään KYSYMYKSIÄ
+	//Lisï¿½tï¿½ï¿½n KYSYMYKSIï¿½
 		/**
 		 * This is method for adding questions
 		 * @param f value for added question
@@ -369,13 +370,13 @@ public class Dao {
 				return readAllQuestions();
 			}
 			catch(SQLException e) {
-				System.out.println(String.format("Virhe kysymyksen lisäämisessä: %s, %s", sql,e.toString()));
+				System.out.println(String.format("Virhe kysymyksen lisï¿½ï¿½misessï¿½: %s, %s", sql,e.toString()));
 				
 				return null;
 			}
 		
 	}
-		// Poistetaan KYSYMYKSIÄ
+		// Poistetaan KYSYMYKSIï¿½
 		/**
 		 * This is method to delete questions
 		 * @param kysymys_id value for selected question
@@ -387,9 +388,9 @@ public class Dao {
 			try {
 				PreparedStatement pstmt=conn.prepareStatement(sql); // prepare valmistele kysely
 				pstmt.setString(1, kysymys_id); // aseta tietokantakyselyn indeksi
-				pstmt.executeUpdate(); // päivitä taulu
+				pstmt.executeUpdate(); // pï¿½ivitï¿½ taulu
 			
-				return readAllQuestions(); // näytä päivitetty taulu, viesti päivityksen onnistumisestä riittää
+				return readAllQuestions(); // nï¿½ytï¿½ pï¿½ivitetty taulu, viesti pï¿½ivityksen onnistumisestï¿½ riittï¿½ï¿½
 			}
 			catch(SQLException e) {
 				System.out.println(String.format("Virhe kysymyksen poistamisessa: %s, %s", sql,e.toString()));
@@ -397,4 +398,35 @@ public class Dao {
 			return null;
 			}
 	}
+		
+		// USERILLE KYSYMYSTEN METODIT
+		
+		//Luetaan kaikki KYSYMYKSET taulusta
+			/**
+			 * This method to read all questions from database
+			 * @return returns list of all questions
+			 */
+			public ArrayList<Questions> readAllQuestionsToUser() {
+				ArrayList<Questions> list=new ArrayList<>();
+				String sql = "select * from kysymykset";
+				try {
+					Statement stmt=conn.createStatement();
+					ResultSet RS=stmt.executeQuery(sql);
+					while (RS.next()){
+						Questions f=new Questions();
+						f.setId(RS.getInt("kysymys_id"));
+						f.setKysymys(RS.getString("kysymys"));
+						
+						list.add(f);
+					}
+
+					return list;
+				}
+				catch(SQLException e) {
+					System.out.println(String.format("Virhe tietojen hakemisessa: %s, %s", sql,e.toString()));
+				
+					return null;
+				}
+				
+			}
 }
