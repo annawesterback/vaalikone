@@ -12,31 +12,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Vaalikone</title>
-
+<!-- http://localhost:8080/rest/vaalikoneservice/all -->
 
 </head>
 <body>
 <header>
 <img alt="" src="/jsp/vote.png" alt="vote" class="center">
 </header>
+<ul>
+  <li><a href='/mainpage'>Etusivu</a></li>
+  <li><a href='/addquestions'>Vastaa kysymyksiin</a></li>
+  <li style="float:right"><a class="active" href="#about">Kirjaudu ulos</a></li>
+</ul>
+
 <h1>Kandidaatti näkee kysymykset täällä</h1>
 
 <br>
 <br>
 
 
-<h2> <a href='/addquestions'>Vastaa kysymyksiin</a> <br>
-
-
-<a href='/mainpage'>Takaisin pääsivulle</a>
+<h2> Kysymykset ja vastauksesi</a>
 </h2>
 <br>
 	<ol>
 		<c:forEach var="kysymykset" items="${requestScope.questionslist}" >
 		<h3><li>${kysymykset.id}:
 			${kysymykset.kysymys} </h3>
-		<h4><a href='/deletequestions?id=${kysymykset.id}'>delete</a> <!-- vaihda linkit osoittamaan resteihin -->
-			<a href='/readtoupdatequestions?id=${kysymykset.id}'>update</a></h4> <!-- vaihda linkit osoittamaan resteihin -->
+		<h4><a href='/deletequestions?id=${kysymykset.id}'>Poista</a> <!-- vaihda linkit osoittamaan resteihin -->
+			<a href='/readtoupdatequestions?id=${kysymykset.id}'>Päivitä</a></h4> <!-- vaihda linkit osoittamaan resteihin -->
+
 		</c:forEach>
 	</ol>
  

@@ -61,9 +61,52 @@ form {
     font-size: 20;
 }
 
+
 a:-webkit-any-link {
 	padding-top: 6px;
 	padding-left: 9px;
+}
+
+/* Navbarin muotoilut */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #76323F;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #D7CEC7;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+li a:hover:not(.active) {
+  background-color: #565656;
+  color: #D7CEC7
+}
+
+.active {
+
+  background-color: #565656;
+}
+
+/* Linkkien v‰rit*/
+a {
+	color: #76323F
+}
+
+/*hiirin linkin p‰‰ll‰*/
+a:hover:not(.active) {
+  color: #565656;
 }
 
 
