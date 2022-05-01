@@ -28,7 +28,7 @@ public class VaalikoneService {
 	@Context HttpServletResponse response;
 // lue kaikki rivit taulusta kysymykset
 	@GET
-	@Path("/all")
+	@Path("/all") // http://localhost:8080/rest/vaalikoneservice/all
 	@Produces(MediaType.APPLICATION_JSON)
 	public void readAllUserQuestions() {
 		//Create an EntityManagerFactory with the settings from persistence.xml file
