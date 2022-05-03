@@ -52,8 +52,12 @@ public class VaalikoneService {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
+=======
+
+>>>>>>> branch 'anna' of https://github.com/annawesterback/vaalikone.git
 	//This method uses FormParams, but does the same as previous	
 //		@POST
 //		@Path("/useranswerquestions")
@@ -82,6 +86,9 @@ public class VaalikoneService {
 		List<Fish> list=readFish();		
 		return list;
 	}
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'anna' of https://github.com/annawesterback/vaalikone.git
 =======
 >>>>>>> branch 'anna' of https://github.com/annawesterback/vaalikone.git
 	
