@@ -53,6 +53,7 @@ public class VaalikoneService {
 		}
 	}
 	
+<<<<<<< HEAD
 	//This method uses FormParams, but does the same as previous	
 //		@POST
 //		@Path("/useranswerquestions")
@@ -81,6 +82,8 @@ public class VaalikoneService {
 		List<Fish> list=readFish();		
 		return list;
 	}
+=======
+>>>>>>> branch 'anna' of https://github.com/annawesterback/vaalikone.git
 	
 	
 }
