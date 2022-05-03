@@ -52,45 +52,4 @@ public class VaalikoneService {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
-	
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'anna' of https://github.com/annawesterback/vaalikone.git
-	//This method uses FormParams, but does the same as previous	
-//		@POST
-//		@Path("/useranswerquestions")
-//		@Produces(MediaType.APPLICATION_JSON)
-//		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-//		public UserQuestions postUserAnswerQ(@FormParam("kysymys_id") String id, @FormParam("kysymys") String kysymys) {
-//			UserQuestions kysymykset=new UserQuestions(id, kysymys);
-//			EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
-//			EntityManager em=emf.createEntityManager();
-//			em.getTransaction().begin();
-//			em.persist(kysymykset);
-//			em.getTransaction().commit();
-//			return kysymykset;
-//		}
-	
-	@POST
-	@Path("/useranswerquestions")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Fish> addFish(Fish fish) {
-		EntityManager em=emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(fish);//The actual insertion line
-		em.getTransaction().commit();
-		//Calling the method readFish() of this service
-		List<Fish> list=readFish();		
-		return list;
-	}
-<<<<<<< HEAD
-=======
->>>>>>> branch 'anna' of https://github.com/annawesterback/vaalikone.git
-=======
->>>>>>> branch 'anna' of https://github.com/annawesterback/vaalikone.git
-	
-	
 }
