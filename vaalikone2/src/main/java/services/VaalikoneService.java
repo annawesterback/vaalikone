@@ -52,4 +52,32 @@ public class VaalikoneService {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	// lue kaikki rivit taulusta kysymykset
+		@GET
+		@Path("/allanswers") // http://localhost:8080/rest/vaalikoneservice/all
+		@Produces(MediaType.APPLICATION_JSON)
+		public void readAllUserAnswers() {
+			//Create an EntityManagerFactory with the settings from persistence.xml file
+			EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone"); // EntityManagerFactory luo yhteys tietokantaan, tämä sama persistencessä, eli jpa käyttää tätä
+			//And then EntityManager, which can manage the entities.
+			EntityManager em=emf.createEntityManager();
+			
+			// Read all the rows from table prey. Here the Prey must start with capital, 
+			// because class's name starts. This returns a List of Prey objects.
+			List<UserQuestions> list=em.createQuery("select k from Answers k").getResultList(); //Luokan nimi UserQuestions, siellä kerrottu että tämä luokka tarkoittaa tiekannassa @table kysymykset
+			// return list;
+			RequestDispatcher rd=request.getRequestDispatcher("/jsp/usershowanswers.jsp");
+			request.setAttribute("answerslist", list);
+			try {
+				rd.forward(request, response);
+			} catch (ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	
+	
+	
 }

@@ -31,20 +31,25 @@
 <br>
 
 
-<h2> Kysymykset ja vastauksesi</a>
-</h2>
+<h2> Kysymykset ja vastauksesi</h2>
 <br>
-	<ol>
-		<c:forEach var="kysymykset" items="${requestScope.questionslist}" >
-		<h3><li>${kysymykset.id}:
-		${kysymykset.kysymys} 
-</h3>			
-		<h4><a href='/deletequestions?id=${kysymykset.id}'>Poista</a> <!-- vaihda linkit osoittamaan resteihin -->
-			<a href='/readtoupdatequestions?id=${kysymykset.id}'>Päivitä</a></h4> <!-- vaihda linkit osoittamaan resteihin -->
+	
+
+ 	<ol>
+		<c:forEach var="vastaukset" items="${requestScope.answerslist}" >
+		<h3>
+
+				${vastaukset.ehdokas_id}:
+		 		${vastaukset.kysymys_id} 
+				${vastaukset.vastaus}	
+				${vastaukset.kommentti}
+	
+				</h3>			
+		
 
 		</c:forEach>
 	</ol>
-	
+ 
  
  
 <footer>
