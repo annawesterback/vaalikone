@@ -16,8 +16,8 @@
 <br>
 
 <h2>
-<a href='/ShowQuestions'>Takaisin kysymyksiin</a> <br>
-<a href='/mainpage'>Takaisin pääsivulle</a>
+<a href='/rest/vaalikoneservice/all'>Takaisin kysymyksiin</a> <br>
+<a href='/jsp/usermainpage.jsp'>Takaisin pääsivulle</a>
 </h2>
 
 

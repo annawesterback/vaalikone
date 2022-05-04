@@ -12,6 +12,7 @@
 <br>
 <h2>
 <a href='/rest/vaalikoneservice/all'>Selaa kysymyksiä</a><br>
+<a href='/rest/vaalikoneservice/allanswers'>Selaa vastauksia</a><br>
 
 
  </h2>
