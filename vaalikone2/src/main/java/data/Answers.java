@@ -2,6 +2,7 @@ package data;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +15,18 @@ import javax.persistence.Table;
 public class Answers implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	
+	@Id
+	
+	@Column(name="EHDOKAS_ID")
 	private int ehdokas_id;
+	@Column(name="KYSYMYS_ID")
 	private int kysymys_id;
+	@Column(name="VASTAUS")
 	private int vastaus;
+	@Column(name="KOMMENTTI")
 	private String kommentti;
 	
 	public Answers(String ehdokas_id, String kysymys_id, String vastaus, String kommentti) {
