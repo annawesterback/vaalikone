@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
  
  <%@ page import="java.util.ArrayList" %>   
- <%@ page import="data.Questions" %>   
+ <%@ page import="data.Questions" %>    
+  <%@ page import="data.Answers" %>  
  <style><%@include file="/jsp/style.css"%></style>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
@@ -36,9 +37,11 @@
 	
 
  	<ol>
+ 	
+ 	
 		<c:forEach var="vastaukset" items="${requestScope.answerslist}" >
 		<h3>
-
+		
 				${vastaukset.ehdokas_id}:
 		 		${vastaukset.kysymys_id} 
 				${vastaukset.vastaus}	

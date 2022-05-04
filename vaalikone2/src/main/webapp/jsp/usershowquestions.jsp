@@ -20,7 +20,7 @@
 <img alt="" src="/jsp/vote.png" alt="vote" class="center">
 </header>
 <ul>
-  <li><a href='/mainpage'>Etusivu</a></li>
+  <li><a href='/jsp/usermainpage.jsp'>Etusivu</a></li>
   <li><a href='/addquestions'>Vastaa kysymyksiin</a></li>
   <li style="float:right"><a class="active" href="/index.html">Kirjaudu ulos</a></li>
 </ul>

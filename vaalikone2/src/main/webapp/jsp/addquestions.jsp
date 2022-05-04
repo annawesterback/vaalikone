@@ -22,8 +22,10 @@
 
 
 <form action='/addquestions' method='post'>
-Kysymyksen ID: <input type='text' name='kysymys_id' value='${requestScope.kysymykset.id}'><br> 
-Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysymys}'><br>
+Kysymyksen ID: <input type='text' name='kysymys_id' value='${requestScope.kysymykset.id}' readonly><br> 
+Kysymys: <input type='text' name='kysymys' value='${requestScope.kysymykset.kysymys}' readonly><br>
+Vastaus: <input type='text' name='vastaus' value='${requestScope.vastaukset.vastaus}' ><br>
+Kommentti: <input type='text' name='kommentti' value='${requestScope.vastaukset.kommentti}'><br>
 <input type='submit' name='ok' value='Send help'> 
 </form>
 
