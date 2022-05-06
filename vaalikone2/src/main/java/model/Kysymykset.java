@@ -15,6 +15,7 @@ public class Kysymykset implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+
 	@Column(name="KYSYMYS_ID")
 	private int kysymysId;
 

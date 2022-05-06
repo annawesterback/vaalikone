@@ -15,6 +15,7 @@ public class Ehdokkaat implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+
 	@Column(name="EHDOKAS_ID")
 	private int ehdokasId;
 

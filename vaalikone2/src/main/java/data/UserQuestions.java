@@ -11,8 +11,7 @@ import dao.Dao;
  * @version 1.0
  * The persistent class for the kid database table.
  */
-@Entity // tells that instances of this class are persistable
-@Table(name="kysymykset") // tämä oltava sama kuin tietokannan taulun nimi
+
 public class UserQuestions implements Serializable { // user questions olisi voinut olla kysymykset
 	private static final long serialVersionUID = 1L;
 	@Id // @Id All the Entities need an Id field. Here it is attribute id (int id;) and must be annotated with @Id.
