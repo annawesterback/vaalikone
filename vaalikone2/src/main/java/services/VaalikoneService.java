@@ -25,9 +25,13 @@ import javax.ws.rs.core.MediaType;
 
 import data.Answers;
 import data.UserQuestions;
+import model.Ehdokkaat;
+import model.Kysymykset;
+import model.Vastaukset;
 
 @Path("/vaalikoneservice")
 public class VaalikoneService {
+	EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone"); // EntityManagerFactory luo yhteys tietokantaan, tämä sama persistencessä, eli jpa käyttää tätä
 	@Context HttpServletRequest request;
 	@Context HttpServletResponse response;
 // lue kaikki rivit taulusta kysymykset
@@ -36,13 +40,12 @@ public class VaalikoneService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public void readAllUserQuestions() {
 		//Create an EntityManagerFactory with the settings from persistence.xml file
-		EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone"); // EntityManagerFactory luo yhteys tietokantaan, tämä sama persistencessä, eli jpa käyttää tätä
 		//And then EntityManager, which can manage the entities.
 		EntityManager em=emf.createEntityManager();
 		
 		// Read all the rows from table prey. Here the Prey must start with capital, 
 		// because class's name starts. This returns a List of Prey objects.
-		List<UserQuestions> list=em.createQuery("select k from UserQuestions k").getResultList(); //Luokan nimi UserQuestions, siellä kerrottu että tämä luokka tarkoittaa tiekannassa @table kysymykset
+		List<Kysymykset> list=em.createQuery("select k from Kysymykset k").getResultList(); //Luokan nimi UserQuestions, siellä kerrottu että tämä luokka tarkoittaa tiekannassa @table kysymykset
 		// return list;
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/usershowquestions.jsp");
 		request.setAttribute("questionslist", list);
@@ -61,13 +64,13 @@ public class VaalikoneService {
 		@Produces(MediaType.APPLICATION_JSON)
 		public void readAllUserAnswers() {
 			//Create an EntityManagerFactory with the settings from persistence.xml file
-			EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone"); // EntityManagerFactory luo yhteys tietokantaan, tämä sama persistencessä, eli jpa käyttää tätä
+		
 			//And then EntityManager, which can manage the entities.
 			EntityManager em=emf.createEntityManager();
 			
 			// Read all the rows from table prey. Here the Prey must start with capital, 
 			// because class's name starts. This returns a List of Prey objects.
-			List<Answers> list=em.createQuery("select k from Answers k").getResultList(); //Luokan nimi UserQuestions, siellä kerrottu että tämä luokka tarkoittaa tiekannassa @table kysymykset
+			List<Vastaukset> list=em.createQuery("select k from Vastaukset k").getResultList(); //Luokan nimi UserQuestions, siellä kerrottu että tämä luokka tarkoittaa tiekannassa @table kysymykset
 			// return list;
 			RequestDispatcher rd=request.getRequestDispatcher("/jsp/usershowanswers.jsp");
 			request.setAttribute("answerslist", list);
@@ -142,19 +145,26 @@ public class VaalikoneService {
 //					e.printStackTrace();
 //				}
 //			}	
-//			@POST
-//			@Path("/addanswer")
-//			@Produces(MediaType.APPLICATION_JSON)
-//			@Consumes(MediaType.APPLICATION_JSON)
-//			public List<Answers> addAnswer(Answers answer) {
-//				EntityManager em=emf.createEntityManager();
-//				em.getTransaction().begin();
-//				em.persist(answer);//The actual insertion line
-//				em.getTransaction().commit();
-//				//Calling the method readFish() of this service
-//				List<Answers> list=readAnswer();		
-//				return list;
-//			}	
+			@POST
+			@Path("/addanswer")
+			@Produces(MediaType.APPLICATION_JSON)
+			@Consumes("application/x-www-form-urlencoded")
+			public void addAnswer(@FormParam("ehdokas_id") int eid, @FormParam("kysymys_id") int kid, @FormParam("vastaus") int vastaus, @FormParam("kommentti") int kommentti) {
+				Ehdokkaat e = new Ehdokkaat();
+				e.setEhdokasId(eid);
+				Kysymykset k = new Kysymykset();
+				k.setKysymysId(kid);
+				Vastaukset v = new Vastaukset();
+				v.setVastaus(vastaus);
+				v.setEhdokkaat(e);
+				v.setKysymykset(k);
+				
+				EntityManager em=emf.createEntityManager();
+				em.getTransaction().begin();
+				em.persist(v);//The actual insertion line
+				em.getTransaction().commit();
+				readAllUserAnswers();
+			}	
 //			@PUT
 //			@Path("/updateanswer")
 //			@Produces(MediaType.APPLICATION_JSON)

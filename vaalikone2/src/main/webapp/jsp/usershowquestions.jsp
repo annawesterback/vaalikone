@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
  
  <%@ page import="java.util.ArrayList" %>   
- <%@ page import="data.Questions" %>   
+ <%@ page import="model.Kysymykset" %>   
  <style><%@include file="/jsp/style.css"%></style>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
@@ -36,11 +36,11 @@
 <br>
 	<ol>
 		<c:forEach var="kysymykset" items="${requestScope.questionslist}" >
-		<h3><li>${kysymykset.id}:
+		<h3><li>${kysymykset.kysymysId}:
 		${kysymykset.kysymys} 
 </h3>			
-		<h4><a href='/deletequestions?id=${kysymykset.id}'>Poista</a> <!-- vaihda linkit osoittamaan resteihin -->
-			<a href='/readtoupdatequestions?id=${kysymykset.id}'>Päivitä</a></h4> <!-- vaihda linkit osoittamaan resteihin -->
+		<h4><a href='/deletequestions?id=${kysymykset.kysymysId}'>Poista</a> <!-- vaihda linkit osoittamaan resteihin -->
+			<a href='/readtoupdatequestions?id=${kysymykset.kysymysId}'>Päivitä</a></h4> <!-- vaihda linkit osoittamaan resteihin -->
 
 		</c:forEach>
 	</ol>
