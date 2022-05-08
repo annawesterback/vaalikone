@@ -21,7 +21,7 @@
 </header>
 <ul>
   <li><a href='/jsp/usermainpage.jsp'>Etusivu</a></li>
-  <li><a href='/addquestions'>Vastaa kysymyksiin</a></li>
+  <li><a href='/jsp/answerform.jsp'>Vastaa kysymyksiin</a></li>
   <li style="float:right"><a class="active" href="/index.html">Kirjaudu ulos</a></li>
 </ul>
 

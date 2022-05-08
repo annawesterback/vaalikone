@@ -22,7 +22,7 @@
 </header>
 <ul>
   <li><a href='/jsp/usermainpage.jsp'>Etusivu</a></li>
-  <li><a href='/addquestions'>Vastaa kysymyksiin</a></li>
+  <li><a href='/jsp/answersform.jsp'>Vastaa kysymyksiin</a></li>
   <li style="float:right"><a class="active" href="/index.html">Kirjaudu ulos</a></li>
 </ul>
 
@@ -46,8 +46,11 @@
 		 		${vastaukset.kysymykset.kysymysId} 
 				${vastaukset.vastaus}	
 				${vastaukset.kommentti}
-	
-				</h3>			
+
+		</h3>			
+		<h4><a href='/rest/vaalikoneservice/deleteanswer?id=${vastaukset.id}'>Poista</a> 
+			<a href='/rest/vaalikoneservice/readtoupdateanswer?id=${vastaukset.id}'>Päivitä</a>
+		</h4> 
 		
 
 		</c:forEach>
