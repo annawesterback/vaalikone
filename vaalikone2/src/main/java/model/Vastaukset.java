@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.persistence.Entity; 
 import javax.persistence.GeneratedValue; 
@@ -26,16 +28,28 @@ public class Vastaukset implements Serializable {
 	private int vastaus;
 
 	//bi-directional many-to-one association to Ehdokkaat
-	@ManyToOne
-	@JoinColumn(name="EHDOKAS_ID")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+//	@ManyToMany(cascade = CascadeType.PERSIST)
+//	@ManyToMany(mappedBy="ehdokkaat",cascade = CascadeType.PERSIST)
+	@JoinColumn(name="EHDOKAS_ID")	
 	private Ehdokkaat ehdokkaat;
 
 	//bi-directional many-to-one association to Kysymykset
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
+//	@ManyToMany(cascade = CascadeType.PERSIST)
+//	@ManyToMany(mappedBy="kysymykset",cascade = CascadeType.PERSIST)
 	@JoinColumn(name="KYSYMYS_ID")
 	private Kysymykset kysymykset;
 
 	public Vastaukset() {
+	}
+
+
+	public Vastaukset(String id, String vastaus, String kommentti) {
+		// TODO Auto-generated constructor stub
+
+
+
 	}
 
 	public int getId() {
@@ -76,6 +90,9 @@ public class Vastaukset implements Serializable {
 
 	public void setKysymykset(Kysymykset kysymykset) {
 		this.kysymykset = kysymykset;
+	}
+	public String toString() {
+		return String.format("id:%s, vastaus:%s, kommentti:%s", id, vastaus, kommentti);
 	}
 
 }

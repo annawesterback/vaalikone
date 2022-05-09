@@ -41,7 +41,7 @@ public class HandleAnswers extends HttpServlet {
 	  public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	      throws IOException, ServletException {
 	  String action = request.getServletPath();
-	  List<Vastaukset> list=null;
+	  List<Vastaukset> list=null; 
 	  switch (action) {
 	  case "/addanswer":
 		  list=addanswer(request);break;
@@ -55,7 +55,7 @@ public class HandleAnswers extends HttpServlet {
 	  case "/readtoupdateanswer":
 		  Vastaukset v=readtoupdateanswer(request);
 		  request.setAttribute("Vastaukset", v); // 
-		  RequestDispatcher rd=request.getRequestDispatcher("./jsp/answerstoupdateform.jsp"); //
+		  RequestDispatcher rd=request.getRequestDispatcher("/jsp/answersuptodateform.jsp"); //
 		  rd.forward(request, response);
 		  return;
 	  }
@@ -76,7 +76,7 @@ public class HandleAnswers extends HttpServlet {
 
 	private List<Vastaukset> addanswer(HttpServletRequest request) {
 		//A Fish object to send to our web-service 
-		Vastaukset v=new Vastaukset(request.getParameter("kysymys_id"), request.getParameter("vastaus"),request.getParameter("kommentti"), null);
+		Vastaukset v=new Vastaukset(request.getParameter("id"), request.getParameter("vastaus"),request.getParameter("kommentti"));
 		System.out.println(v);
 		String uri = "http://127.0.0.1:8080/rest/vaalikoneservice/addanswer";
 		Client c=ClientBuilder.newClient();
@@ -94,7 +94,7 @@ public class HandleAnswers extends HttpServlet {
 	}
 	
 	private List<Vastaukset> readanswer(HttpServletRequest request) {
-		Int id=request.getParameter("id");
+		String id=request.getParameter("id");
 		String uri = "http://127.0.0.1:8080/rest/vaalikoneservice/readanswer";
 		Client c=ClientBuilder.newClient();
 		WebTarget wt=c.target(uri);
@@ -109,7 +109,7 @@ public class HandleAnswers extends HttpServlet {
 	
 	private List<Vastaukset> updateanswer(HttpServletRequest request) {
 		//A Fish object to send to our web-service 
-		Vastaukset v=new Vastaukset(request.getParameter("kysymys_id"), request.getParameter("vastaus"), request.getParameter("kommentti"), null);
+		Vastaukset v=new Vastaukset(request.getParameter("id"), request.getParameter("vastaus"), request.getParameter("kommentti"));
 		System.out.println(v);
 		String uri = "http://127.0.0.1:8080/rest/vaalikoneservice/updateanswer";
 		Client c=ClientBuilder.newClient();

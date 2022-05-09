@@ -20,7 +20,7 @@
 	Ehdokas id:<input type='text' name='eid' value=''><br>
 	Kysymys id: <input type='text' name='kid' value=''><br>
 	Vastaus: <input type='text' name='vastaus' value=''><br>
-<!-- 	Kommentti: <input type='text' name='kommentti' value=''><br> -->
+	Kommentti: <input type='text' name='kommentti' value=''><br> 
 	<input type='submit' name='ok' value='Send help'>
 	</form>
 

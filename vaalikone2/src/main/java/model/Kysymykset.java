@@ -25,9 +25,20 @@ public class Kysymykset implements Serializable {
 	private String kysymys;
 
 	//bi-directional many-to-one association to Vastaukset
-	@OneToMany(mappedBy="kysymykset")
+//	@OneToMany(mappedBy="kysymykset")
+//	@ManyToMany(mappedBy="kysymykset", cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(
+			name="vastaukset",
+			joinColumns= {
+			@JoinColumn(name="EHDOKAS_ID")
+			},
+			inverseJoinColumns= {
+					@JoinColumn(name="KYSYMYS_ID")
+			}
+			)
 	private List<Vastaukset> vastauksets;
-
+//	private List<Ehdokkaat> ehdokkaat;
 	public Kysymykset() {
 	}
 

@@ -41,7 +41,8 @@ public class Ehdokkaat implements Serializable {
 	private String sukunimi;
 
 	//bi-directional many-to-one association to Vastaukset
-	@OneToMany(mappedBy="ehdokkaat")
+//	@OneToMany(mappedBy="ehdokkaat")
+	@OneToMany(mappedBy="ehdokkaat", cascade = CascadeType.PERSIST)
 	private List<Vastaukset> vastauksets;
 
 	public Ehdokkaat() {
