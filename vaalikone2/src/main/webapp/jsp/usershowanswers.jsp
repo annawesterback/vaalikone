@@ -35,7 +35,12 @@
 
 <h2> Kysymykset ja vastauksesi</h2>
 <br>
-	
+		<h3><a>
+	1 = täysin eri mieltä, 
+	2 = jokseenkin eri mieltä, 
+	3 = ei eri eikä samaa mieltä, 
+	4 = jokseenkin samaa mieltä, 
+	5 = täysin samaa mieltä</a></h3>
 
  	<ol>
  	
@@ -52,7 +57,7 @@
 		</h3>			
 		<h4><a href='/rest/vaalikoneservice/deleteanswer/${vastaukset.id}'>Poista</a> 
 			<a href='/rest/vaalikoneservice/readtoupdateanswer/${vastaukset.id}'>Päivitä</a>
-<!-- 			<a href='/jsp/answersuptodateform.jsp'>Päivitä</a> -->
+
 		</h4> 
 		
 
