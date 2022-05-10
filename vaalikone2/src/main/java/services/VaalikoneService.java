@@ -46,7 +46,7 @@ public class VaalikoneService {
 		
 		// Read all the rows from table prey. Here the Prey must start with capital, 
 		// because class's name starts. This returns a List of Prey objects.
-		List<Kysymykset> list=em.createQuery("select k from Kysymykset k").getResultList(); //Luokan nimi UserQuestions, siellä kerrottu että tämä luokka tarkoittaa tiekannassa @table kysymykset
+		List<Kysymykset> list=em.createQuery("select k from Kysymykset k").getResultList(); 
 		// return list;
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/usershowquestions.jsp");
 		request.setAttribute("questionslist", list);
@@ -83,7 +83,7 @@ public class VaalikoneService {
 			
 			// Read all the rows from table prey. Here the Prey must start with capital, 
 			// because class's name starts. This returns a List of Prey objects.
-			List<Vastaukset> list=em.createQuery("select k from Vastaukset k").getResultList(); //Luokan nimi UserQuestions, siellä kerrottu että tämä luokka tarkoittaa tiekannassa @table kysymykset
+			List<Vastaukset> list=em.createQuery("select k from Vastaukset k").getResultList(); 
 			// return list;
 			RequestDispatcher rd=request.getRequestDispatcher("/jsp/usershowanswers.jsp");
 			request.setAttribute("answerslist", list);
