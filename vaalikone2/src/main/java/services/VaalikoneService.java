@@ -98,15 +98,18 @@ public class VaalikoneService {
 			@Path("/addanswer")
 			@Produces(MediaType.APPLICATION_JSON)
 			@Consumes("application/x-www-form-urlencoded")
-			public void addAnswer(@FormParam("ehdokas_id") int eid, @FormParam("kysymys_id") int kid, @FormParam("vastaus") int vastaus, @FormParam("kommentti") int kommentti) {
+			public void addAnswer(@FormParam("eid") int eid, @FormParam("kid") int kid, @FormParam("vastaus") int vastaus, @FormParam("kommentti") String kommentti) {
+				System.out.println(eid + " " + kid + " " + vastaus + " " + kommentti);
 				Ehdokkaat e = new Ehdokkaat();
 				e.setEhdokasId(eid);
 				Kysymykset k = new Kysymykset();
 				k.setKysymysId(kid);
 				Vastaukset v = new Vastaukset();
 				v.setVastaus(vastaus);
+				v.setKommentti(kommentti);
 				v.setEhdokkaat(e);
 				v.setKysymykset(k);
+				
 				
 				EntityManager em=emf.createEntityManager();
 				em.getTransaction().begin();
@@ -116,38 +119,50 @@ public class VaalikoneService {
 			}	
 
 
-			@PUT
+			@POST
 			@Path("/updateanswer")
 			@Produces(MediaType.APPLICATION_JSON)
-			@Consumes(MediaType.APPLICATION_JSON)
-			public List<Vastaukset> updateAnswer(Vastaukset vastaus) {
+			@Consumes("application/x-www-form-urlencoded")
+			public void updateAnswer(@FormParam("vastaus_id") int vid,@FormParam("ehdokas_id") int eid, @FormParam("kysymys_id") int kid, @FormParam("vastaus") int vastaus, @FormParam("kommentti") String kommentti) {
+				System.out.println(eid + " " + kid + " " + vastaus + " " + kommentti);
+				Ehdokkaat e = new Ehdokkaat();
+				e.setEhdokasId(eid);
+				Kysymykset k = new Kysymykset();
+				k.setKysymysId(kid);
+				Vastaukset v = new Vastaukset();
+				v.setVastaus(vastaus);
+				v.setKommentti(kommentti);
+				v.setEhdokkaat(e);
+				v.setKysymykset(k);
+				v.setId(vid);
+				
 				EntityManager em=emf.createEntityManager();
 				em.getTransaction().begin();
-				Vastaukset v=em.find(Vastaukset.class, vastaus.getId()); //select * from fish where id=fish.getId()
-				if (v!=null) {
-					em.merge(vastaus);//The actual update line
-				}
-				em.getTransaction().commit();
-				//Calling the method readFish() of this service
-				List<Vastaukset> list=readAnswers();		
-				return list;
+				Vastaukset vanha=em.find(Vastaukset.class, v.getId()); //select * from fish where id=fish.getId()
+				if (vanha!=null) {
+					em.merge(v);//The actual update line
+					em.getTransaction().commit();
+				}			
+				readAllUserAnswers();
+
+
 			}	
-			@DELETE
-			@Path("/deleteanswer/{id}")
-			@Produces(MediaType.APPLICATION_JSON)
-			@Consumes(MediaType.APPLICATION_JSON)
-			public List<Vastaukset> deleteAnswer(@PathParam("id") int id) {
-				EntityManager em=emf.createEntityManager();
-				em.getTransaction().begin();
-				Vastaukset v=em.find(Vastaukset.class, id);
-				if (v!=null) {
-					em.remove(v);//The actual delete line
-				}
-				em.getTransaction().commit();
-				//Calling the method readFish() of this service
-				List<Vastaukset> list=readAnswers();		
-				return list;
-			}	
+//			@DELETE
+//			@Path("/deleteanswer/{id}")
+//			@Produces(MediaType.APPLICATION_JSON)
+//			@Consumes(MediaType.APPLICATION_JSON)
+//			public List<Vastaukset> deleteAnswer(@PathParam("id") int id) {
+//				EntityManager em=emf.createEntityManager();
+//				em.getTransaction().begin();
+//				Vastaukset v=em.find(Vastaukset.class, id);
+//				if (v!=null) {
+//					em.remove(v);//The actual delete line
+//				}
+//				em.getTransaction().commit();
+//				//Calling the method readFish() of this service
+//				List<Vastaukset> list=readAnswers();		
+//				return list;
+//			}	
 			@GET
 			@Path("/deleteanswer/{id}")
 			@Produces(MediaType.APPLICATION_JSON)
@@ -176,15 +191,23 @@ public class VaalikoneService {
 				}
 			}	
 			@GET
-			@Path("/readtoupdateanswer/{ehdokas_id}")
+			@Path("/readtoupdateanswer/{id}")
 			@Produces(MediaType.APPLICATION_JSON)
 			@Consumes(MediaType.APPLICATION_JSON)
-			public Vastaukset readToUpdateAnswer(@PathParam("ehdokas_id") int ehdokas_id) {
+			public void readToUpdateAnswer(@PathParam("id") int id) {
 				EntityManager em=emf.createEntityManager();
 				em.getTransaction().begin();
-				Vastaukset v=em.find(Vastaukset.class, ehdokas_id);
+				Vastaukset v=em.find(Vastaukset.class, id);
 				em.getTransaction().commit();
-				return v;
+				
+				RequestDispatcher rd=request.getRequestDispatcher("/jsp/answersuptodateform.jsp");
+				request.setAttribute("answer", v);
+				try {
+					rd.forward(request, response);
+				} catch (ServletException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}	
 		}
 	

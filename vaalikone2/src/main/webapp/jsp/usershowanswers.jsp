@@ -4,6 +4,7 @@
  <%@ page import="java.util.ArrayList" %>   
  <%@ page import="model.Kysymykset" %>    
   <%@ page import="model.Vastaukset" %>  
+    <%@ page import="model.Ehdokkaat" %>  
  <style><%@include file="/jsp/style.css"%></style>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
@@ -34,22 +35,29 @@
 
 <h2> Kysymykset ja vastauksesi</h2>
 <br>
-	
+		<h3><a>
+	1 = täysin eri mieltä, 
+	2 = jokseenkin eri mieltä, 
+	3 = ei eri eikä samaa mieltä, 
+	4 = jokseenkin samaa mieltä, 
+	5 = täysin samaa mieltä</a></h3>
 
  	<ol>
  	
  	
 		<c:forEach var="vastaukset" items="${requestScope.answerslist}" >
 		<h3>
-		
-				${vastaukset.ehdokkaat.ehdokasId}:
-		 		${vastaukset.kysymykset.kysymysId} 
-				${vastaukset.vastaus}	
-				${vastaukset.kommentti}
+						
+		<a>Ehdokas id: </a>${vastaukset.ehdokkaat.ehdokasId} <br>
+		<a>Kysymys id: </a> ${vastaukset.kysymykset.kysymysId}
+		 		${vastaukset.kysymykset.kysymys}<br>
+		<a>Vastauksesi (1-5): </a>${vastaukset.vastaus}	<br>
+		<a>Kommentti: </a>${vastaukset.kommentti}<br>
 
 		</h3>			
-		<h4><a href='/rest/vaalikoneservice/deleteanswer?id=${vastaukset.id}'>Poista</a> 
-			<a href='/rest/vaalikoneservice/readtoupdateanswer?id=${vastaukset.id}'>Päivitä</a>
+		<h4><a href='/rest/vaalikoneservice/deleteanswer/${vastaukset.id}'>Poista</a> 
+			<a href='/rest/vaalikoneservice/readtoupdateanswer/${vastaukset.id}'>Päivitä</a>
+
 		</h4> 
 		
 
