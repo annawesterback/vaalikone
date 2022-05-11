@@ -21,7 +21,7 @@
 </header>
 <ul>
   <li><a href='/jsp/usermainpage.jsp'>Etusivu</a></li>
-  <li><a href='/jsp/answerform.jsp'>Vastaa kysymyksiin</a></li>
+  <li><a href='/jsp/answersform.jsp'>Vastaa kysymyksiin</a></li>
   <li style="float:right"><a class="active" href="/index.html">Kirjaudu ulos</a></li>
 </ul>
 
@@ -31,16 +31,15 @@
 <br>
 
 
-<h2> Kysymykset ja vastauksesi</a>
-</h2>
+<h2> Kysymykset</h2>
 <br>
 	<ol>
 		<c:forEach var="kysymykset" items="${requestScope.questionslist}" >
-		<h3><li>${kysymykset.kysymysId}:
-		${kysymykset.kysymys} 
+		<h3><li>${kysymykset.kysymysId}: 
+		${kysymykset.kysymys}
 </h3>			
-		<h4><a href='/deletequestions?id=${kysymykset.kysymysId}'>Poista</a> <!-- vaihda linkit osoittamaan resteihin -->
-			<a href='/readtoupdatequestions?id=${kysymykset.kysymysId}'>Päivitä</a></h4> <!-- vaihda linkit osoittamaan resteihin -->
+		<h4><a href='/deletequestions?id=${kysymykset.kysymysId}'></a> 
+			<a href='/readtoupdatequestions?id=${kysymykset.kysymysId}'></a></h4>
 
 		</c:forEach>
 	</ol>

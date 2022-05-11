@@ -53,9 +53,9 @@ public class HandleAnswers extends HttpServlet {
 //		  list=readanswer(request);break;
 
 	  }
-	  request.setAttribute("answerslist", list); 
-	  RequestDispatcher rd=request.getRequestDispatcher("./jsp/answerform.jsp"); //
-	  rd.forward(request, response);
+//	  request.setAttribute("answerslist", list); 
+//	  RequestDispatcher rd=request.getRequestDispatcher("./jsp/answerform.jsp"); //
+//	  rd.forward(request, response);
   }
 
 
