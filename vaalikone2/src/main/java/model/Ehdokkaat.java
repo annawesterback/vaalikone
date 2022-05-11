@@ -42,12 +42,12 @@ public class Ehdokkaat implements Serializable {
 
 	//bi-directional many-to-one association to Vastaukset
 //	@OneToMany(mappedBy="ehdokkaat")
-	@OneToMany(mappedBy="ehdokkaat", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="ehdokkaat"	, cascade = CascadeType.PERSIST)
 	private List<Vastaukset> vastauksets;
 
 	public Ehdokkaat() {
 	}
-
+	
 	public int getEhdokasId() {
 		return this.ehdokasId;
 	}

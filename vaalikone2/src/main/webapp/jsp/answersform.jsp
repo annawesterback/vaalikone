@@ -26,7 +26,9 @@
 	5 = täysin samaa mieltä</h3>
 
 	<form action="/rest/vaalikoneservice/addanswer" method="post">
-	Ehdokas id:<input type='text' name='eid' value=''><br>
+	<input type='hidden' name='nid' value=''><br>
+	Ehdokkaan etunimi: <input type='text' name='etunimi' value=''><br>	
+	Ehdokkaan sukunimi: <input type='text' name='sukunimi' value=''><br>	
 	Kysymys id: <input type='text' name='kid' value=''><br>
 	Vastaus: <input type='text' name='vastaus' value=''><br>
 	Kommentti: <input type='text' name='kommentti' value=''><br> 

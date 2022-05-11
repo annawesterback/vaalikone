@@ -98,10 +98,12 @@ public class VaalikoneService {
 			@Path("/addanswer")
 			@Produces(MediaType.APPLICATION_JSON)
 			@Consumes("application/x-www-form-urlencoded")
-			public void addAnswer(@FormParam("eid") int eid, @FormParam("kid") int kid, @FormParam("vastaus") int vastaus, @FormParam("kommentti") String kommentti) {
+			public void addAnswer(@FormParam("eid") int eid,@FormParam("etunimi") String etunimi,@FormParam("sukunimi") String sukunimi, @FormParam("kid") int kid, @FormParam("vastaus") int vastaus, @FormParam("kommentti") String kommentti) {
 				System.out.println(eid + " " + kid + " " + vastaus + " " + kommentti);
 				Ehdokkaat e = new Ehdokkaat();
 				e.setEhdokasId(eid);
+				e.setEtunimi(etunimi);
+				e.setSukunimi(sukunimi);
 				Kysymykset k = new Kysymykset();
 				k.setKysymysId(kid);
 				Vastaukset v = new Vastaukset();
@@ -109,6 +111,7 @@ public class VaalikoneService {
 				v.setKommentti(kommentti);
 				v.setEhdokkaat(e);
 				v.setKysymykset(k);
+
 				
 				
 				EntityManager em=emf.createEntityManager();
@@ -123,10 +126,12 @@ public class VaalikoneService {
 			@Path("/updateanswer")
 			@Produces(MediaType.APPLICATION_JSON)
 			@Consumes("application/x-www-form-urlencoded")
-			public void updateAnswer(@FormParam("vastaus_id") int vid,@FormParam("ehdokas_id") int eid, @FormParam("kysymys_id") int kid, @FormParam("vastaus") int vastaus, @FormParam("kommentti") String kommentti) {
+			public void updateAnswer(@FormParam("vastaus_id") int vid,@FormParam("ehdokas_id") int eid,@FormParam("etunimi") String etunimi,@FormParam("sukunimi") String sukunimi, @FormParam("kysymys_id") int kid, @FormParam("vastaus") int vastaus, @FormParam("kommentti") String kommentti) {
 				System.out.println(eid + " " + kid + " " + vastaus + " " + kommentti);
 				Ehdokkaat e = new Ehdokkaat();
 				e.setEhdokasId(eid);
+				e.setEtunimi(etunimi);
+				e.setSukunimi(sukunimi);
 				Kysymykset k = new Kysymykset();
 				k.setKysymysId(kid);
 				Vastaukset v = new Vastaukset();
@@ -150,8 +155,11 @@ public class VaalikoneService {
 //			@DELETE
 //			@Path("/deleteanswer/{id}")
 //			@Produces(MediaType.APPLICATION_JSON)
-//			@Consumes(MediaType.APPLICATION_JSON)
-//			public List<Vastaukset> deleteAnswer(@PathParam("id") int id) {
+//			@Consumes("application/x-www-form-urlencoded")
+////			public List<Vastaukset> deleteAnswer(@PathParam("id") int id) {
+//			public void deleteAnswer(@PathParam("id") int id) {
+//				
+//		
 //				EntityManager em=emf.createEntityManager();
 //				em.getTransaction().begin();
 //				Vastaukset v=em.find(Vastaukset.class, id);
@@ -160,8 +168,9 @@ public class VaalikoneService {
 //				}
 //				em.getTransaction().commit();
 //				//Calling the method readFish() of this service
-//				List<Vastaukset> list=readAnswers();		
-//				return list;
+////				List<Vastaukset> list=readAnswers();		
+////				return list;
+//				readAllUserAnswers();				
 //			}	
 			@GET
 			@Path("/deleteanswer/{id}")
@@ -208,7 +217,7 @@ public class VaalikoneService {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}	
-		}
-	
+			}
+}
+			
 		

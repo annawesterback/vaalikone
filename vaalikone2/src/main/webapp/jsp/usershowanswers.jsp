@@ -49,7 +49,8 @@
 		<h3>
 						
 		<a>Ehdokas id: </a>${vastaukset.ehdokkaat.ehdokasId} <br>
-		<a>Kysymys id: </a> ${vastaukset.kysymykset.kysymysId}
+		<a>Ehdokkaan nimi: </a>${vastaukset.ehdokkaat.sukunimi}  ${vastaukset.ehdokkaat.etunimi}<br>
+		<a>Kysymys id ja kysymys: </a> ${vastaukset.kysymykset.kysymysId}
 		 		${vastaukset.kysymykset.kysymys}<br>
 		<a>Vastauksesi (1-5): </a>${vastaukset.vastaus}	<br>
 		<a>Kommentti: </a>${vastaukset.kommentti}<br>
