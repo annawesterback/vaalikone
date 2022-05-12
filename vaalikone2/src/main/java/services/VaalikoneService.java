@@ -103,10 +103,13 @@ public class VaalikoneService {
 				Ehdokkaat e = new Ehdokkaat();
 				e.setEhdokasId(eid);
 				e.setEtunimi(etunimi);
-				e.setSukunimi(sukunimi);
-				Kysymykset k = new Kysymykset();
-				k.setKysymysId(kid);
+				e.setSukunimi(sukunimi);				
+//				Ehdokkaat e = getEhdokas(eid);
+//				System.out.println("Löytyi ehdokas: " + e.toString());
+				Kysymykset k = getKysymys(kid);
+				System.out.println("Löytyi kysymys: " + k.toString());
 				Vastaukset v = new Vastaukset();
+//				v.setKysymysId(kid);
 				v.setVastaus(vastaus);
 				v.setKommentti(kommentti);
 				v.setEhdokkaat(e);
@@ -115,12 +118,24 @@ public class VaalikoneService {
 				
 				
 				EntityManager em=emf.createEntityManager();
-				em.getTransaction().begin();
+				em.getTransaction().begin();		
 				em.persist(v);//The actual insertion line
 				em.getTransaction().commit();
 				readAllUserAnswers();
 			}	
 
+			private Kysymykset getKysymys(int id) {
+				EntityManager em=emf.createEntityManager();
+				em.getTransaction().begin();
+				Kysymykset kysymykset=em.find(Kysymykset.class, id); //select * from fish where id=fish.getId()
+				return kysymykset;
+			}
+			private Ehdokkaat getEhdokas(int id) {
+				EntityManager em=emf.createEntityManager();
+				em.getTransaction().begin();
+				Ehdokkaat ehdokkaat=em.find(Ehdokkaat.class, id); //select * from fish where id=fish.getId()
+				return ehdokkaat;
+			}
 
 			@POST
 			@Path("/updateanswer")
@@ -180,6 +195,7 @@ public class VaalikoneService {
 					@Context HttpServletRequest request,
 					@Context HttpServletResponse response
 					) {
+				System.out.println(id);
 				EntityManager em=emf.createEntityManager();
 				em.getTransaction().begin();
 				Vastaukset v=em.find(Vastaukset.class, id);

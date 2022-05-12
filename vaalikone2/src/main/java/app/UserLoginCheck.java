@@ -56,7 +56,7 @@ public class UserLoginCheck extends HttpServlet {
 	
 		if (username.equals("Candidate") && password.equals("candidate123"))
 		{
-			response.sendRedirect("/rest/vaalikoneservice/all");
+			response.sendRedirect("/jsp/usermainpage.jsp");
 			
 		}
 		

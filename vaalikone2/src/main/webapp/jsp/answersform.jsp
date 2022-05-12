@@ -26,7 +26,7 @@
 	5 = täysin samaa mieltä</h3>
 
 	<form action="/rest/vaalikoneservice/addanswer" method="post">
-	<input type='hidden' name='nid' value=''><br>
+	Ehdokas id: <input type='text' name='eid' value='${requestScope.answer.ehdokkaat.ehdokasId}'readonly>
 	Ehdokkaan etunimi: <input type='text' name='etunimi' value=''><br>	
 	Ehdokkaan sukunimi: <input type='text' name='sukunimi' value=''><br>	
 	Kysymys id: <input type='text' name='kid' value=''><br>

@@ -95,4 +95,5 @@ public class Vastaukset implements Serializable {
 		return String.format("id:%s, vastaus:%s, kommentti:%s", id, vastaus, kommentti);
 	}
 
-}
+
+	}
